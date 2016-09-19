@@ -66,7 +66,7 @@ Convert is used for rending LaTex during evaluation.
 
 Webkit2png is used for rendering HTML during evaluation.
 
-#### Evaluation
+#### Evaluate
 
 Python image-based evaluation
 
@@ -148,7 +148,7 @@ Finally, we generate the vocabulary from training set. All tokens occuring less 
 python scripts/preprocessing/generate_latex_vocab.py --data-path data/sample/train_filter.lst --label-path data/sample/formulas.norm.lst --output-file data/sample/latex_vocab.txt
 ```
 
-### Training
+### Train
 
 For a complete set of parameters, run
 
@@ -156,7 +156,7 @@ For a complete set of parameters, run
 th src/train.lua -h
 ```
 
-The most important parameters for training are `data_base_dir`, which specifies where the images live; `data_path`, the training file; `label_path`, the LaTeX formulas, `val_data_path`, the validation file; the `vocab_file`, the generated vocabulary.
+The most important parameters for training are `data_base_dir`, which specifies where the images live; `data_path`, the training file; `label_path`, the LaTeX formulas, `val_data_path`, the validation file; `vocab_file`, the vocabulary file with one token per each line.
 
 ```
 th src/train.lua -phase train -gpu_id 1 \
@@ -171,7 +171,7 @@ th src/train.lua -phase train -gpu_id 1 \
 -batch_size 20 -beam_size 1
 ```
 
-In a default setting, the log file will be put to `log.txt`. The log file will contain the training and validation perplexities. `model_dir` speicifies where the models should be saved.
+In the default setting, the log file will be put to `log.txt`. The log file records the training and validation perplexities. `model_dir` speicifies where the models should be saved. The default parameters are optimized for the full dataset. In order to overfit on this toy example, use flags `-learning_rate 0.05`, `-lr_decay 1.0` and `-num_epochs 30`, then after 30 epochs, the training perplexity can reach around 1.1 and the validation perplexity can only reach around 17.
 
 ### Test
 
@@ -202,7 +202,7 @@ Note that we do not specify a vocabulary file here, since it is already included
 
 where \t denotes tab.
 
-### Evaluation
+### Evaluate
 
 #### Text Metrics
 
@@ -248,7 +248,7 @@ wget -P data/ http://lstm.seas.harvard.edu/latex/html/data/html_64_64_100k.tgz
 cd data; tar zxf html_64_64_100k.tgz; cd ..
 ```
 
-### Training
+### Train
 
 The training parameters is nearly identical to the Math-to-LaTex task. However, some parameters such as `max_image_width` need to be set to a different value for memory efficiency and convergence speed.
 
@@ -285,7 +285,7 @@ th src/train.lua -phase test -gpu_id 1 -load_model -model_dir model/html -visual
 -batch_size 80 -beam_size 5 
 ```
 
-### Evaluation
+### Evaluate
 
 #### Text Metrics
 

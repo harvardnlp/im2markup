@@ -8,10 +8,14 @@ from multiprocessing.dummy import Pool as ThreadPool
 
 TIMEOUT = 10
 
+# replace \pmatrix with \begin{pmatrix}\end{pmatrix}
+# replace \matrix with \begin{matrix}\end{matrix}
 template = r"""
 \documentclass[12pt]{article}
 \pagestyle{empty}
 \usepackage{amsmath}
+\newcommand{\mymatrix}[1]{\begin{matrix}#1\end{matrix}}
+\newcommand{\mypmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \begin{document}
 \begin{displaymath}
 %s
@@ -110,6 +114,8 @@ def main_parallel(line):
     img_path, l, output_path, replace = line
     pre_name = output_path.replace('/', '_').replace('.','_')
     l = l.strip()
+    l = l.replace(r'\pmatrix', r'\mypmatrix')
+    l = l.replace(r'\matrix', r'\mymatrix')
     # remove leading comments
     l = l.strip('%')
     if len(l) == 0:
