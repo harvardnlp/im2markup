@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Visualizer</title>
+
+
+    <link rel="stylesheet" href="http://www.cs.cmu.edu/~diyiy/css/main.css" media="screen">
+    <link rel="stylesheet" href="http://www.cs.cmu.edu/~diyiy/css/flexslider.css" media="screen">
+    <link rel="stylesheet" href="http://www.cs.cmu.edu/~diyiy/css/fancybox-light.css" media="screen">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="http://www.cs.cmu.edu/~diyiy/js/jquery-1.8.3.min.js"></script>
+    <script src="http://www.cs.cmu.edu/~diyiy/js/jquery.isotope.min.js"></script>
+    <script src="http://www.cs.cmu.edu/~diyiy/js/modernizr.custom.js"></script>
+    <script>
+        if (window.location.hash.indexOf('#!') !== -1) window.location.hash = '';
+    </script>
+    <style>
+        table, th, td {
+                border: 1px solid LightGray;
+            }
+        td {
+            text-align: center;
+        }
+        </style>
+</head>
+
+    <body>
+
+        <!-- Main Content -->
+        <div class="shadow"><!-- Used for shadow behind main content -->
+        <div id="content-wrapper">
+
+            <!-- PORTFOLIO -->
+            <div id="publication" class="span-top">
+                <div class="fill-green" style="margin-top:-150px;">Results</div>
+
+                <div class="full-width">
+                    <!-- MARK: REPLACE -->
+                    <ul id="portfolio-filter" style="margin-top:10px;"><!-- Portfolio filter -->
+                        <li>
+                            <a id ="click-sel" href="" class="button current" data-filter=".f-all">
+                                <div class="button-small button-green">
+                                    <div class="button-anim-border"></div>
+                                    <div class="button-small-label">ALL</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="button" data-filter=".f-incorrect">
+                                <div class="button-small button-green">
+                                    <div class="button-anim-border"></div>
+                                    <div class="button-small-label">InCorrect</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="button" data-filter=".f-correct">
+                                <div class="button-small button-green">
+                                    <div class="button-anim-border"></div>
+                                    <div class="button-small-label">Correct</div>
+                                </div>
+                            </a>
+                        </li>
+                                       
+                    <ol class="portfolio-content top-border-green"><!-- Portfolio Content --><!-- See Documentation for more info -->
