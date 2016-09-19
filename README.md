@@ -46,7 +46,7 @@ The following lua libraries are required for the main model.
 
 Note that currently we only support **GPU** since we use cudnn in the CNN part.
 
-#### Preprocessing
+#### Preprocess
 
 Python
 
@@ -110,7 +110,7 @@ where `<label_idx>` denotes the line index of the label (starting from 0).
 
 To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples.
 
-### Preprocessing
+### Preprocess
 
 The images in the dataset contain a LaTeX formula rendered on a full page. To accelerate training, we need to preprocess the images. 
 
