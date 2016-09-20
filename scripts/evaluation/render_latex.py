@@ -108,7 +108,7 @@ def main(args):
     pool.join() 
 
 def output_err(output_path, i, reason, img):
-    logging.info('ERROR: %d\t%s\t%s\n'%(i,img,reason))
+    logging.info('ERROR: %s %s\n'%(img,reason))
 
 def main_parallel(line):
     img_path, l, output_path, replace = line
@@ -144,7 +144,7 @@ def main_parallel(line):
         pdf_filename = tex_filename[:-4]+'.pdf'
         png_filename = tex_filename[:-4]+'.png'
         if not os.path.exists(pdf_filename):
-            output_err(output_path, line_idx, 'cannot compile', img_path)
+            output_err(output_path, 0, 'cannot compile', img_path)
         else:
             os.system("convert -density 200 -quality 100 %s %s"%(pdf_filename, png_filename))
             os.remove(pdf_filename)

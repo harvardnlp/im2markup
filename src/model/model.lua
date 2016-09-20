@@ -86,9 +86,11 @@ function model:load(model_path, config)
         local pos_embedding_bw = nn.Sequential():add(nn.LookupTable(self.max_encoder_l_h, self.encoder_num_layers*self.encoder_num_hidden*2))
         for i = 1, self.max_encoder_l_h do
             local j = math.min(i, model_config.max_encoder_l_h)
-            pos_embedding_fw.get(1).weight[i] = self.pos_embedding_fw.get(1).weight[j]
-            pos_embedding_bw.get(1).weight[i] = self.pos_embedding_bw.get(1).weight[j]
+            pos_embedding_fw:get(1).weight[i] = self.pos_embedding_fw:get(1).weight[j]
+            pos_embedding_bw:get(1).weight[i] = self.pos_embedding_bw:get(1).weight[j]
         end
+        self.pos_embedding_fw = pos_embedding_fw
+        self.pos_embedding_bw = pos_embedding_bw
     end
     self:_build()
 end
@@ -139,6 +141,7 @@ function model:_build()
     log(string.format('target_vocab_size: %d', self.target_vocab_size))
     log(string.format('target_embedding_size: %d', self.target_embedding_size))
     log(string.format('max_encoder_l_w: %d', self.max_encoder_l_w))
+    log(string.format('max_encoder_l_h: %d', self.max_encoder_l_h))
     log(string.format('max_decoder_l: %d', self.max_decoder_l))
     log(string.format('input_feed: %s', self.input_feed))
     log(string.format('batch_size: %d', self.batch_size))

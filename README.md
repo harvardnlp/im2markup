@@ -36,13 +36,14 @@ Most of the code is written in [Torch](http://torch.ch), with Python for preproc
 
 The following lua libraries are required for the main model.
 
-* cunn
-* cudnn
 * tds
 * hdf5
-* cutorch
+* class 
 * nn
 * nngraph
+* cunn
+* cudnn
+* cutorch
 
 Note that currently we only support **GPU** since we use cudnn in the CNN part.
 
@@ -50,7 +51,8 @@ Note that currently we only support **GPU** since we use cudnn in the CNN part.
 
 Python
 
-* PIL
+* Pillow
+* numpy
 
 Optional: We use Node.js and KaTeX for preprocessing [Installation](https://nodejs.org/en/)
 
@@ -70,7 +72,7 @@ Webkit2png is used for rendering HTML during evaluation.
 
 Python image-based evaluation
 
-* difflib
+* python-Levenshtein
 * matplotlib
 * Distance
 
@@ -187,7 +189,7 @@ Now we can load the model and test on test set. Note that in order to output the
 th src/train.lua -phase test -gpu_id 1 -load_model -model_dir model/latex -visualize \
 -data_base_dir data/sample/images_processed/ \
 -data_path data/sample/test_filter.lst \
--label_path data/image_data/data/sample/formulas.norm.lst \
+-label_path data/sample/formulas.norm.lst \
 -output_dir results \
 -max_num_tokens 500 -max_image_width 800 -max_image_height 800 \
 -batch_size 1 -beam_size 5 
@@ -209,7 +211,7 @@ where \t denotes tab.
 The test perplexity can be obtained after testing is finished. In order to evaluate BLEU, the following command needs to be executed.
 
 ```
-python scripts/evaluation/evaluate_bleu.py --result-path results/results.txt --data-path data/samples/test_filter.lst --label-path data/sample/formulas.norm.lst
+python scripts/evaluation/evaluate_bleu.py --result-path results/results.txt --data-path data/sample/test_filter.lst --label-path data/sample/formulas.norm.lst
 ```
 
 Note that although the predicions file contains the gold labels, since some images (e.g., too large sizes) will be ignored during testing, to make the comparison fair, we need to use the test file again and treat those that does not appear in predictions file as blank predictions.
