@@ -67,6 +67,7 @@ cmd:option('-prealloc', false, [[Use memory preallocation and sharing between cl
 
 opt = cmd:parse(arg)
 torch.manualSeed(opt.seed)
+math.randomseed(opt.seed)
 
 function train(model, phase, batch_size, num_epochs, train_data, val_data, model_dir, steps_per_checkpoint, num_batches_val, beam_size, visualize, output_dir, trie, learning_rate_init, lr_decay, start_decay_at)
     local loss = 0
