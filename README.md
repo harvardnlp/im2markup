@@ -198,8 +198,9 @@ th src/train.lua -phase test -gpu_id 1 -load_model -model_dir model/latex -visua
 Note that we do not specify a vocabulary file here, since it is already included in the model. After a while, the perplexities will be logged, and the predictions file results.txt will be put to `output_dir`. The format of the predicitons file is:
 
 ```
-<img_name>\t<label_gold>\t<label_pred>\t<score_pred>\t<score_gold>
-
+<img_name1>\t<label_gold1>\t<label_pred1>\t<score_pred1>\t<score_gold1>
+<img_name2>\t<label_gold2>\t<label_pred>2\t<score_pred2>\t<score_gold2>
+...
 ```
 
 where \t denotes tab.
