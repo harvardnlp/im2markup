@@ -58,7 +58,7 @@ Optional: We use Node.js and KaTeX for preprocessing [Installation](https://node
 
 ##### pdflatex [Installaton](https://www.tug.org/texlive/)
 
-Pdflatex is used for rending LaTex during evaluation.
+Pdflatex is used for rendering LaTex during evaluation.
 
 ##### ImageMagick convert [Installation](http://www.imagemagick.org/script/index.php)
 
@@ -192,7 +192,7 @@ th src/train.lua -phase test -gpu_id 1 -load_model -model_dir model/latex -visua
 -label_path data/sample/formulas.norm.lst \
 -output_dir results \
 -max_num_tokens 500 -max_image_width 800 -max_image_height 800 \
--batch_size 1 -beam_size 5 
+-batch_size 5 -beam_size 5 
 ```
 
 Note that we do not specify a vocabulary file here, since it is already included in the model. After a while, the perplexities will be logged, and the predictions file results.txt will be put to `output_dir`. The format of the predicitons file is:
