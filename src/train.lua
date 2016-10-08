@@ -38,7 +38,7 @@ cmd:option('-dictionary_path', '/n/rush_lab/data/image_data/train_dictionary.txt
 cmd:text('')
 cmd:text('**Optimization**')
 cmd:text('')
-cmd:option('-num_epochs', 12, [[The number of whole data passes]])
+cmd:option('-num_epochs', 15, [[The number of whole data passes]])
 cmd:option('-batch_size', 1, [[Batch size]])
 cmd:option('-learning_rate', 0.1, [[Initial learning rate]])
 cmd:option('-learning_rate_min', 0.00001, [[Initial learning rate]])

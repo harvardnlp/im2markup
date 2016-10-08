@@ -128,7 +128,7 @@ Next, the LaTeX formulas need to be tokenized or normalized.
 python scripts/preprocessing/preprocess_formulas.py --mode normalize --input-file data/sample/formulas.lst --output-file data/sample/formulas.norm.lst
 ```
 
-The above command will normalize the formulas.
+The above command will normalize the formulas. Note that this command will produce some error messages since some formulas cannot be parsed by the KaTeX parser.
 
 Then we need to prepare train, validation and test files. We will exclude large images from training and validation set, and we also ignore formulas with too many tokens or formulas with grammar errors.
 
