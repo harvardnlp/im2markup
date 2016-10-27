@@ -1,7 +1,6 @@
  --[[ Model, adapted from https://github.com/harvardnlp/seq2seq-attn/blob/master/train.lua
 --]]
 require 'nn'
-require 'hdf5'
 require 'cudnn'
 require 'optim'
 require 'paths'
