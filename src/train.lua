@@ -3,7 +3,6 @@
 torch.setheaptracking(true)
 require 'nn'
 require 'nngraph'
-require 'hdf5'
 require 'cudnn'
 require 'optim'
 require 'paths'
