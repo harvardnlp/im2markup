@@ -37,7 +37,6 @@ Most of the code is written in [Torch](http://torch.ch), with Python for preproc
 The following lua libraries are required for the main model.
 
 * tds
-* hdf5
 * class 
 * nn
 * nngraph
