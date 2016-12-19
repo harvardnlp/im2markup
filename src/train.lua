@@ -3,7 +3,6 @@
 torch.setheaptracking(true)
 require 'nn'
 require 'nngraph'
-require 'hdf5'
 require 'cudnn'
 require 'optim'
 require 'paths'
@@ -38,7 +37,7 @@ cmd:option('-dictionary_path', '/n/rush_lab/data/image_data/train_dictionary.txt
 cmd:text('')
 cmd:text('**Optimization**')
 cmd:text('')
-cmd:option('-num_epochs', 12, [[The number of whole data passes]])
+cmd:option('-num_epochs', 15, [[The number of whole data passes]])
 cmd:option('-batch_size', 1, [[Batch size]])
 cmd:option('-learning_rate', 0.1, [[Initial learning rate]])
 cmd:option('-learning_rate_min', 0.00001, [[Initial learning rate]])
@@ -67,6 +66,7 @@ cmd:option('-prealloc', false, [[Use memory preallocation and sharing between cl
 
 opt = cmd:parse(arg)
 torch.manualSeed(opt.seed)
+math.randomseed(opt.seed)
 
 function train(model, phase, batch_size, num_epochs, train_data, val_data, model_dir, steps_per_checkpoint, num_batches_val, beam_size, visualize, output_dir, trie, learning_rate_init, lr_decay, start_decay_at)
     local loss = 0

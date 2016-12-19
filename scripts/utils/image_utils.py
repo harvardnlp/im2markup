@@ -46,7 +46,9 @@ def pad_group_image(img, output_path, pad_size, buckets):
     return True
 
 def downsample_image(img, output_path, ratio):
-    assert ratio>1, ratio
+    assert ratio>=1, ratio
+    if ratio == 1:
+        return True
     old_im = Image.open(img)
     old_size = old_im.size
     new_size = (int(old_size[0]/ratio), int(old_size[1]/ratio))

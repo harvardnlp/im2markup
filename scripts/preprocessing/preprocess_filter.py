@@ -30,15 +30,15 @@ def process_args(args):
     parser.add_argument('--no-filter', dest='filter', action='store_false')
     parser.set_defaults(filter=False)
     parser.add_argument('--max-width', dest='max_width',
-                        type=str, default=500,
+                        type=int, default=500,
                         help=('If filter flag is set, images with width than max-width will be discarded in the output file.'
                         ))
     parser.add_argument('--max-height', dest='max_height',
-                        type=str, default=160,
+                        type=int, default=160,
                         help=('If filter flag is set, images with larger height than max-width will be discarded in the output file.'
                         ))
     parser.add_argument('--max-tokens', dest='max_tokens',
-                        type=str, default=150,
+                        type=int, default=150,
                         help=('If filter flag is set, formulas with more than max-tokens tokens will be discarded in the output file.'
                         ))
     parser.add_argument('--log-path', dest="log_path",

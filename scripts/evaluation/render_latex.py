@@ -8,10 +8,14 @@ from multiprocessing.dummy import Pool as ThreadPool
 
 TIMEOUT = 10
 
+# replace \pmatrix with \begin{pmatrix}\end{pmatrix}
+# replace \matrix with \begin{matrix}\end{matrix}
 template = r"""
 \documentclass[12pt]{article}
 \pagestyle{empty}
 \usepackage{amsmath}
+\newcommand{\mymatrix}[1]{\begin{matrix}#1\end{matrix}}
+\newcommand{\mypmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \begin{document}
 \begin{displaymath}
 %s
@@ -104,12 +108,14 @@ def main(args):
     pool.join() 
 
 def output_err(output_path, i, reason, img):
-    logging.info('ERROR: %d\t%s\t%s\n'%(i,img,reason))
+    logging.info('ERROR: %s %s\n'%(img,reason))
 
 def main_parallel(line):
     img_path, l, output_path, replace = line
     pre_name = output_path.replace('/', '_').replace('.','_')
     l = l.strip()
+    l = l.replace(r'\pmatrix', r'\mypmatrix')
+    l = l.replace(r'\matrix', r'\mymatrix')
     # remove leading comments
     l = l.strip('%')
     if len(l) == 0:
@@ -138,7 +144,7 @@ def main_parallel(line):
         pdf_filename = tex_filename[:-4]+'.pdf'
         png_filename = tex_filename[:-4]+'.png'
         if not os.path.exists(pdf_filename):
-            output_err(output_path, line_idx, 'cannot compile', img_path)
+            output_err(output_path, 0, 'cannot compile', img_path)
         else:
             os.system("convert -density 200 -quality 100 %s %s"%(pdf_filename, png_filename))
             os.remove(pdf_filename)

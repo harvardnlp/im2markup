@@ -193,6 +193,8 @@ def img_edit_distance(im1, im2, out_path=None):
     seq1_t, seq2_t = make_strs(seq1_new, seq2_new)
 
     if len(seq2_new) == 0 or len(seq1_new) == 0:
+        if len(seq2_new) == len(seq1_new):
+            return (edit_distance, max(len(seq1_int),len(seq2_int)), match1, True)# all blank
         return (edit_distance, max(len(seq1_int),len(seq2_int)), match1, False)
     match = True
     matcher = StringMatcher(None, seq1_t, seq2_t)

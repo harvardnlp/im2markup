@@ -36,27 +36,28 @@ Most of the code is written in [Torch](http://torch.ch), with Python for preproc
 
 The following lua libraries are required for the main model.
 
-* cunn
-* cudnn
 * tds
-* hdf5
-* cutorch
+* class 
 * nn
 * nngraph
+* cunn
+* cudnn
+* cutorch
 
 Note that currently we only support **GPU** since we use cudnn in the CNN part.
 
-#### Preprocessing
+#### Preprocess
 
 Python
 
-* PIL
+* Pillow
+* numpy
 
 Optional: We use Node.js and KaTeX for preprocessing [Installation](https://nodejs.org/en/)
 
 ##### pdflatex [Installaton](https://www.tug.org/texlive/)
 
-Pdflatex is used for rending LaTex during evaluation.
+Pdflatex is used for rendering LaTex during evaluation.
 
 ##### ImageMagick convert [Installation](http://www.imagemagick.org/script/index.php)
 
@@ -66,11 +67,11 @@ Convert is used for rending LaTex during evaluation.
 
 Webkit2png is used for rendering HTML during evaluation.
 
-#### Evaluation
+#### Evaluate
 
 Python image-based evaluation
 
-* difflib
+* python-Levenshtein
 * matplotlib
 * Distance
 
@@ -110,7 +111,7 @@ where `<label_idx>` denotes the line index of the label (starting from 0).
 
 To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples.
 
-### Preprocessing
+### Preprocess
 
 The images in the dataset contain a LaTeX formula rendered on a full page. To accelerate training, we need to preprocess the images. 
 
@@ -126,7 +127,7 @@ Next, the LaTeX formulas need to be tokenized or normalized.
 python scripts/preprocessing/preprocess_formulas.py --mode normalize --input-file data/sample/formulas.lst --output-file data/sample/formulas.norm.lst
 ```
 
-The above command will normalize the formulas.
+The above command will normalize the formulas. Note that this command will produce some error messages since some formulas cannot be parsed by the KaTeX parser.
 
 Then we need to prepare train, validation and test files. We will exclude large images from training and validation set, and we also ignore formulas with too many tokens or formulas with grammar errors.
 
@@ -148,7 +149,7 @@ Finally, we generate the vocabulary from training set. All tokens occuring less 
 python scripts/preprocessing/generate_latex_vocab.py --data-path data/sample/train_filter.lst --label-path data/sample/formulas.norm.lst --output-file data/sample/latex_vocab.txt
 ```
 
-### Training
+### Train
 
 For a complete set of parameters, run
 
@@ -156,7 +157,7 @@ For a complete set of parameters, run
 th src/train.lua -h
 ```
 
-The most important parameters for training are `data_base_dir`, which specifies where the images live; `data_path`, the training file; `label_path`, the LaTeX formulas, `val_data_path`, the validation file; the `vocab_file`, the generated vocabulary.
+The most important parameters for training are `data_base_dir`, which specifies where the images live; `data_path`, the training file; `label_path`, the LaTeX formulas, `val_data_path`, the validation file; `vocab_file`, the vocabulary file with one token per each line.
 
 ```
 th src/train.lua -phase train -gpu_id 1 \
@@ -171,7 +172,7 @@ th src/train.lua -phase train -gpu_id 1 \
 -batch_size 20 -beam_size 1
 ```
 
-In a default setting, the log file will be put to `log.txt`. The log file will contain the training and validation perplexities. `model_dir` speicifies where the models should be saved.
+In the default setting, the log file will be put to `log.txt`. The log file records the training and validation perplexities. `model_dir` speicifies where the models should be saved. The default parameters are optimized for the full dataset. In order to overfit on this toy example, use flags `-learning_rate 0.05`, `-lr_decay 1.0` and `-num_epochs 30`, then after 30 epochs, the training perplexity can reach around 1.1 and the validation perplexity can only reach around 17.
 
 ### Test
 
@@ -187,29 +188,30 @@ Now we can load the model and test on test set. Note that in order to output the
 th src/train.lua -phase test -gpu_id 1 -load_model -model_dir model/latex -visualize \
 -data_base_dir data/sample/images_processed/ \
 -data_path data/sample/test_filter.lst \
--label_path data/image_data/data/sample/formulas.norm.lst \
+-label_path data/sample/formulas.norm.lst \
 -output_dir results \
 -max_num_tokens 500 -max_image_width 800 -max_image_height 800 \
--batch_size 1 -beam_size 5 
+-batch_size 5 -beam_size 5 
 ```
 
 Note that we do not specify a vocabulary file here, since it is already included in the model. After a while, the perplexities will be logged, and the predictions file results.txt will be put to `output_dir`. The format of the predicitons file is:
 
 ```
-<img_name>\t<label_gold>\t<label_pred>\t<score_pred>\t<score_gold>
-
+<img_name1>\t<label_gold1>\t<label_pred1>\t<score_pred1>\t<score_gold1>
+<img_name2>\t<label_gold2>\t<label_pred>2\t<score_pred2>\t<score_gold2>
+...
 ```
 
 where \t denotes tab.
 
-### Evaluation
+### Evaluate
 
 #### Text Metrics
 
 The test perplexity can be obtained after testing is finished. In order to evaluate BLEU, the following command needs to be executed.
 
 ```
-python scripts/evaluation/evaluate_bleu.py --result-path results/results.txt --data-path data/samples/test_filter.lst --label-path data/sample/formulas.norm.lst
+python scripts/evaluation/evaluate_bleu.py --result-path results/results.txt --data-path data/sample/test_filter.lst --label-path data/sample/formulas.norm.lst
 ```
 
 Note that although the predicions file contains the gold labels, since some images (e.g., too large sizes) will be ignored during testing, to make the comparison fair, we need to use the test file again and treat those that does not appear in predictions file as blank predictions.
@@ -248,7 +250,7 @@ wget -P data/ http://lstm.seas.harvard.edu/latex/html/data/html_64_64_100k.tgz
 cd data; tar zxf html_64_64_100k.tgz; cd ..
 ```
 
-### Training
+### Train
 
 The training parameters is nearly identical to the Math-to-LaTex task. However, some parameters such as `max_image_width` need to be set to a different value for memory efficiency and convergence speed.
 
@@ -285,7 +287,7 @@ th src/train.lua -phase test -gpu_id 1 -load_model -model_dir model/html -visual
 -batch_size 80 -beam_size 5 
 ```
 
-### Evaluation
+### Evaluate
 
 #### Text Metrics
 
