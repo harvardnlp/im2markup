@@ -180,17 +180,27 @@ groupTypes.genfrac = function(group, options) {
 };
 
 groupTypes.array = function(group, options) {
-    norm_str = norm_str + "\\begin{array} { ";
-    if (group.value.cols) {
-        group.value.cols.map(function(start) {
-            if (start && start.align) {
-                norm_str = norm_str + start.align + " ";}});
-    } else {
-        group.value.body[0].map(function(start) {
-            norm_str = norm_str + "l ";
-        } );
+    norm_str = norm_str + "\\begin{" + group.value.style + "} ";
+
+    if (group.value.style == "array" || group.value.style == "tabular") {
+        norm_str = norm_str + "{ ";
+        if (group.value.cols) {
+            group.value.cols.map(function(start) {
+                if (start) {
+                    if (start.type == "align") {
+                        norm_str = norm_str + start.align + " ";
+                    } else if (start.type == "separator") {
+                        norm_str = norm_str + start.separator + " ";
+                    }
+                }
+            });
+        } else {
+            group.value.body[0].map(function(start) {
+                norm_str = norm_str + "c ";
+            } );
+        }
+        norm_str = norm_str + "} ";
     }
-    norm_str = norm_str + "} ";
     group.value.body.map(function(row) {
         if (row[0].value.length > 0) {
             out = row.map(function(cell) {
@@ -200,7 +210,7 @@ groupTypes.array = function(group, options) {
             norm_str = norm_str.substring(0, norm_str.length-2) + "\\\\ ";
         }
     }); 
-    norm_str = norm_str + "\\end{array} ";
+    norm_str = norm_str + "\\end{" + group.value.style + "} ";
 };
 
 groupTypes.sqrt = function(group, options) {

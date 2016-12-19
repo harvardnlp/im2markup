@@ -124,6 +124,7 @@ defineEnvironment("array", {
     });
     var res = {
         type: "array",
+        style: "array",
         cols: cols,
         hskipBeforeAndAfter: true, // \@preamble in lttab.dtx
     };
@@ -184,6 +185,7 @@ defineEnvironment([
     }[context.envName];
     var res = {
         type: "array",
+        style: "matrix",
         hskipBeforeAndAfter: false, // \hskip -\arraycolsep in amsmath
     };
     q = 1;
@@ -206,6 +208,7 @@ defineEnvironment("picture", {
 }, function(context) {
     var res = {
         type: "array",
+        style: "picture",
         arraystretch: 1.2,
         cols: [{
             type: "align",
@@ -232,6 +235,7 @@ defineEnvironment("cases", {
 }, function(context) {
     var res = {
         type: "array",
+        style: "cases",
         arraystretch: 1.2,
         cols: [{
             type: "align",
@@ -262,6 +266,7 @@ defineEnvironment("aligned", {
 }, function(context) {
     var res = {
         type: "array",
+        style: "aligned",
         cols: [],
     };
     res = parseArray(context.parser, res);
