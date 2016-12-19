@@ -202,8 +202,8 @@ groupTypes.array = function(group, options) {
         norm_str = norm_str + "} ";
     }
     group.value.body.map(function(row) {
-        if (row[0].value.length > 0) {
-            if (row[0].value[0].value == "\\hline") {
+        if (row.length > 1 || row[0].value.length > 0) {
+            if (row[0].value[0] && row[0].value[0].value == "\\hline") {
                 norm_str = norm_str + "\\hline ";
                 row[0].value = row[0].value.slice(1);
             }

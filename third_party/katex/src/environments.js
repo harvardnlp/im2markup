@@ -33,9 +33,7 @@ function parseArray(parser, result) {
         } else if (next === "\\end" || next == "}") {
             break;
         } else if (next === "\\\\" || next === "\\cr") {
-
             var cr = parser.parseFunction();
-
             rowGaps.push(cr.value.size);
             row = [];
             body.push(row);
