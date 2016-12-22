@@ -59,7 +59,7 @@ rl.on('line', function(line){
         console.error(line);
         console.error(norm_str);
         console.error(e);
-        console.log();
+        console.log("");
     }
     global_str = ""
     norm_str = ""
