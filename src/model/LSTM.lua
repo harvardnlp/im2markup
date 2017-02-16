@@ -127,7 +127,7 @@ function create_decoder_attn(num_hidden, simple, batch_size, max_encoder_l)
   
   local inputs = {}
   table.insert(inputs, nn.Identity()())
-  table.insert(inputs, nn.Identity()())
+  
   local target_t = nn.LinearNoBias(num_hidden, num_hidden)(inputs[1])
   local context = inputs[2]
   simple = simple or 0
