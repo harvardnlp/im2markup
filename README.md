@@ -42,7 +42,7 @@ The following lua libraries are required for the main model.
 * nngraph
 * cunn
 * cudnn
-* cutorch
+* cutorch (don't forget to update `torch`)
 
 Note that currently we only support **GPU** since we use cudnn in the CNN part.
 
