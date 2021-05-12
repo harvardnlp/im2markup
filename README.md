@@ -109,7 +109,7 @@ where `<label_idx>` denotes the line index of the label (starting from 0).
 
 ## Quick Start (Math-to-LaTeX Toy Example)
 
-To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples.
+To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples, and a processed version can be found at http://lstm.seas.harvard.edu/latex/data/ (if you use this version, you can skip the preprocessing commands below).
 
 ### Preprocess
 
