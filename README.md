@@ -2,11 +2,11 @@
 
 A general-purpose, deep learning-based system to decompile an image into presentational markup. For example, we can infer the LaTeX or HTML source from a rendered image.
 
-<p align="center"><img src="http://lstm.seas.harvard.edu/latex/network.png" width="400"></p>
+<p align="center"><img src="http://52.24.243.180/network.png" width="400"></p>
 
 An example input is a rendered LaTeX formula:
 
-<p align="center"><img src="http://lstm.seas.harvard.edu/latex/results/website/images/119b93a445-orig.png"></p>
+<p align="center"><img src="http://52.24.243.180/website/images/119b93a445-orig.png"></p>
 
 The goal is to infer the LaTeX formula that can render such an image:
 
@@ -76,7 +76,7 @@ Python image-based evaluation
 * Distance
 
 ```
-wget http://lstm.seas.harvard.edu/latex/third_party/Distance-0.1.3.tar.gz
+wget http://52.24.243.180/third_party/Distance-0.1.3.tar.gz
 ```
 
 ```
