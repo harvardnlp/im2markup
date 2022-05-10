@@ -16,7 +16,7 @@ The goal is to infer the LaTeX formula that can render such an image:
 
 Our model employs a convolutional network for text and layout recognition in tandem with an attention-based neural machine translation system. The use of attention additionally provides an alignment from the generated markup to the original source image:
 
-<p align="center"><img src="http://lstm.seas.harvard.edu/latex/mathex.png"></p>
+<p align="center"><img src="http://52.24.243.180/mathex.png"></p>
 
 
 See [our website](http://lstm.seas.harvard.edu/latex/) for a complete interactive version of this visualization over the test set. Our paper (http://arxiv.org/pdf/1609.04938v1.pdf) provides more technical details of this model.
