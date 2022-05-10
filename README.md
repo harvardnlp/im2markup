@@ -2,11 +2,11 @@
 
 A general-purpose, deep learning-based system to decompile an image into presentational markup. For example, we can infer the LaTeX or HTML source from a rendered image.
 
-<p align="center"><img src="http://52.24.243.180/network.png" width="400"></p>
+<p align="center"><img src="https://im2markup.yuntiandeng.com/network.png" width="400"></p>
 
 An example input is a rendered LaTeX formula:
 
-<p align="center"><img src="http://52.24.243.180/results/website/images/119b93a445-orig.png"></p>
+<p align="center"><img src="https://im2markup.yuntiandeng.com/results/website/images/119b93a445-orig.png"></p>
 
 The goal is to infer the LaTeX formula that can render such an image:
 
@@ -16,10 +16,10 @@ The goal is to infer the LaTeX formula that can render such an image:
 
 Our model employs a convolutional network for text and layout recognition in tandem with an attention-based neural machine translation system. The use of attention additionally provides an alignment from the generated markup to the original source image:
 
-<p align="center"><img src="http://52.24.243.180/mathex.png"></p>
+<p align="center"><img src="https://im2markup.yuntiandeng.com/mathex.png"></p>
 
 
-See [our website](http://52.24.243.180/) for a complete interactive version of this visualization over the test set. Our paper (http://arxiv.org/pdf/1609.04938v1.pdf) provides more technical details of this model.
+See [our website](https://im2markup.yuntiandeng.com) for a complete interactive version of this visualization over the test set. Our paper (http://arxiv.org/pdf/1609.04938v1.pdf) provides more technical details of this model.
 
     What You Get Is What You See: A Visual Markup Decompiler  
     Yuntian Deng, Anssi Kanervisto, and Alexander M. Rush
@@ -76,7 +76,7 @@ Python image-based evaluation
 * Distance
 
 ```
-wget http://52.24.243.180/third_party/Distance-0.1.3.tar.gz
+wget https://im2markup.yuntiandeng.com/third_party/Distance-0.1.3.tar.gz
 ```
 
 ```
@@ -109,7 +109,7 @@ where `<label_idx>` denotes the line index of the label (starting from 0).
 
 ## Quick Start (Math-to-LaTeX Toy Example)
 
-To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples, and a processed version can be found at http://52.24.243.180/data/ (if you use this version, you can skip the preprocessing commands below).
+To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples, and a processed version can be found at https://im2markup.yuntiandeng.com/data/ (if you use this version, you can skip the preprocessing commands below).
 
 ### Preprocess
 
@@ -179,7 +179,7 @@ In the default setting, the log file will be put to `log.txt`. The log file reco
 After training, we can load a model and use it to test on test dataset. We provide a model trained on the [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA).
 
 ```
-mkdir -p model/latex; wget -P model/latex/ http://52.24.243.180/model/latex/final-model
+mkdir -p model/latex; wget -P model/latex/ https://im2markup.yuntiandeng.com/model/latex/final-model
 ```
 
 Now we can load the model and test on test set. Note that in order to output the predictions, a flag `-visualize` must be set.
@@ -243,7 +243,7 @@ Another example is to infer the HTML from an image of a web page. We provide a s
 First, download the dataset.
 
 ```
-wget -P data/ http://52.24.243.180/html/data/html_64_64_100k.tgz
+wget -P data/ https://im2markup.yuntiandeng.com/html/data/html_64_64_100k.tgz
 ```
 
 ```
@@ -272,7 +272,7 @@ th src/train.lua -phase train -gpu_id 1 \
 We provide a trained model as well.
 
 ```
-mkdir -p model/html; wget -P model/html/ http://52.24.243.180/model/html/final-model
+mkdir -p model/html; wget -P model/html/ https://im2markup.yuntiandeng.com/model/html/final-model
 ```
 
 Now we are ready to test our model.
