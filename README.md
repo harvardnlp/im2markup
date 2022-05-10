@@ -109,7 +109,7 @@ where `<label_idx>` denotes the line index of the label (starting from 0).
 
 ## Quick Start (Math-to-LaTeX Toy Example)
 
-To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples, and a processed version can be found at http://lstm.seas.harvard.edu/latex/data/ (if you use this version, you can skip the preprocessing commands below).
+To get started with, we provide a toy Math-to-LaTex example. We have a larger dataset [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA) of the same format but with much more samples, and a processed version can be found at http://52.24.243.180/data/ (if you use this version, you can skip the preprocessing commands below).
 
 ### Preprocess
 
@@ -179,7 +179,7 @@ In the default setting, the log file will be put to `log.txt`. The log file reco
 After training, we can load a model and use it to test on test dataset. We provide a model trained on the [im2latex-100k-dataset](https://zenodo.org/record/56198#.V2p0KTXT6eA).
 
 ```
-mkdir -p model/latex; wget -P model/latex/ http://lstm.seas.harvard.edu/latex/model/latex/final-model
+mkdir -p model/latex; wget -P model/latex/ http://52.24.243.180/model/latex/final-model
 ```
 
 Now we can load the model and test on test set. Note that in order to output the predictions, a flag `-visualize` must be set.
@@ -243,7 +243,7 @@ Another example is to infer the HTML from an image of a web page. We provide a s
 First, download the dataset.
 
 ```
-wget -P data/ http://lstm.seas.harvard.edu/latex/html/data/html_64_64_100k.tgz
+wget -P data/ http://52.24.243.180/html/data/html_64_64_100k.tgz
 ```
 
 ```
@@ -272,7 +272,7 @@ th src/train.lua -phase train -gpu_id 1 \
 We provide a trained model as well.
 
 ```
-mkdir -p model/html; wget -P model/html/ http://lstm.seas.harvard.edu/latex/model/html/final-model
+mkdir -p model/html; wget -P model/html/ http://52.24.243.180/model/html/final-model
 ```
 
 Now we are ready to test our model.
