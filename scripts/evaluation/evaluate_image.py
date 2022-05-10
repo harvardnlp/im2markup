@@ -139,7 +139,7 @@ def img_edit_distance(im1, im2, out_path=None):
                         found = True
                         break
                 if not found:
-                    d[int(l, 2)] = unichr(len(seen))
+                    d[int(l, 2)] = chr(len(seen))
                     seen.append((l, np.array(map(int, l))))
                     
         build(int_ls)
