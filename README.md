@@ -19,7 +19,7 @@ Our model employs a convolutional network for text and layout recognition in tan
 <p align="center"><img src="http://52.24.243.180/mathex.png"></p>
 
 
-See [our website](http://lstm.seas.harvard.edu/latex/) for a complete interactive version of this visualization over the test set. Our paper (http://arxiv.org/pdf/1609.04938v1.pdf) provides more technical details of this model.
+See [our website](http://52.24.243.180/) for a complete interactive version of this visualization over the test set. Our paper (http://arxiv.org/pdf/1609.04938v1.pdf) provides more technical details of this model.
 
     What You Get Is What You See: A Visual Markup Decompiler  
     Yuntian Deng, Anssi Kanervisto, and Alexander M. Rush
