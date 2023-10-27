@@ -95,7 +95,7 @@ Perl is used for evaluating BLEU score.
 
 # Usage
 
-We assume that the working directory is `im2markup` throught this document.
+We assume that the working directory is `im2markup` throughout this document.
 The task is to convert an image into its presentational markup, so we need to specify a `data_base_dir` storing the images, a `label_path` storing all labels (e.g., latex formulas). Besides, we need to specify a `data_path` for the training (or test) data samples. The format of `data_path` shall look like:
 
 ```
