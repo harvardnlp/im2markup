@@ -55,7 +55,7 @@ Python
 
 Optional: We use Node.js and KaTeX for preprocessing [Installation](https://nodejs.org/en/)
 
-##### pdflatex [Installaton](https://www.tug.org/texlive/)
+##### pdflatex [Installation](https://www.tug.org/texlive/)
 
 Pdflatex is used for rendering LaTex during evaluation.
 
