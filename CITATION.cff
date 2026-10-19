@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use Image-to-Markup or IM2LATEX-100K, please cite the ICML 2017 paper below and identify the dataset version used."
+title: "Image-to-Markup (im2latex)"
+type: software
+authors:
+  - family-names: Deng
+    given-names: Yuntian
+  - family-names: Kanervisto
+    given-names: Anssi
+  - family-names: Ling
+    given-names: Jeffrey
+  - family-names: Rush
+    given-names: Alexander M.
+url: "https://im2markup.yuntiandeng.com/"
+repository-code: "https://github.com/harvardnlp/im2markup"
+preferred-citation:
+  type: conference-paper
+  title: "Image-to-Markup Generation with Coarse-to-Fine Attention"
+  authors:
+    - family-names: Deng
+      given-names: Yuntian
+    - family-names: Kanervisto
+      given-names: Anssi
+    - family-names: Ling
+      given-names: Jeffrey
+    - family-names: Rush
+      given-names: Alexander M.
+  year: 2017
+  collection-title: "Proceedings of the 34th International Conference on Machine Learning"
+  collection-type: proceedings
+  volume: 70
+  start: 980
+  end: 989
+  url: "https://proceedings.mlr.press/v70/deng17a.html"

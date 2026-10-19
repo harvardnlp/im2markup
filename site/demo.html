@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Original im2latex visualizations | Image-to-Markup</title>
+  <meta name="description" content="Explore the original Image-to-Markup (im2latex) network, attention alignments, and qualitative results by Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush.">
+  <link rel="canonical" href="https://im2markup.yuntiandeng.com/demo.html">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-OiWEn8WwtH+084y4yW2YhhH6z/qTSecHZuk/eiWtnvLtU+Z8lpDsmhOKkex6YARr" crossorigin="anonymous">
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; color: #172d3e; background: #fafaf8; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }
+    .container { width: min(100%, 1240px); padding: 0 24px; }
+    a { color: #15605d; }
+    a:hover, a:focus { color: #0a4542; }
+    .site-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 24px 0; border-bottom: 1px solid #d9e0dc; font-size: 15px; }
+    .site-nav a { font-weight: 600; }
+    header { max-width: 850px; padding: 40px 0 24px; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #536864; }
+    h1 { margin: 10px 0 16px; font-size: clamp(30px, 5vw, 46px); line-height: 1.15; font-weight: 650; }
+    .authors { line-height: 1.8; }
+    .intro { font-size: 18px; }
+    .demo-panel { margin: 20px 0 40px; padding: 24px; border: 1px solid #d9e0dc; border-radius: 12px; background: #fff; }
+    .nav-tabs { display: flex; flex-wrap: wrap; }
+    .nav-tabs > li { float: none; }
+    .nav-tabs > li > a { color: #15605d; font-weight: 600; }
+    .tab-pane { margin: 0; padding: 24px 0 8px; max-width: 100%; overflow-x: auto; }
+    #align { text-align: center; }
+    #align svg { display: block; margin: 16px auto 0; }
+    #model img { display: block; width: 470px; max-width: 100%; height: auto; margin: 0 auto; }
+    #results { text-align: center; }
+    #results-img { margin: 16px 0 0; text-align: left; overflow-x: auto; }
+    .btn { margin: 0 4px 12px; min-height: 40px; color: #172d3e; border-radius: 4px; }
+    .btn:hover { color: #fff; }
+    .btn:disabled:hover { color: #172d3e; }
+    .help { color: #536864; font-size: 14px; margin-top: 16px; }
+    .align { font-family: sans-serif; }
+    footer { padding: 24px 0 40px; border-top: 1px solid #d9e0dc; font-size: 14px; }
+    :focus-visible { outline: 3px solid #d69d30; outline-offset: 3px; }
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .demo-panel { padding: 16px; }
+      .nav-tabs > li > a { padding: 10px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="site-nav" aria-label="Project navigation">
+      <a href="/">Image-to-Markup / im2latex</a>
+      <a href="/data/">Dataset &amp; citation</a>
+      <a href="https://github.com/harvardnlp/im2markup">Source code</a>
+      <a href="https://proceedings.mlr.press/v70/deng17a.html">ICML 2017 paper</a>
+    </nav>
+    <main>
+      <header>
+        <p class="eyebrow">Original research visualizations</p>
+        <h1>See how im2latex reads an equation</h1>
+        <p class="authors"><a href="https://yuntiandeng.com/">Yuntian Deng</a>, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush</p>
+        <p class="intro">Explore the network, attention alignments, and qualitative results from <em>Image-to-Markup Generation with Coarse-to-Fine Attention</em> (ICML 2017).</p>
+        <p>These are the original recorded model outputs. Select an example, then hover over its generated LaTeX tokens to inspect the attention over the input image.</p>
+      </header>
+      <section class="demo-panel" aria-label="Interactive research visualizations">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation"><a id="model-tab" data-toggle="tab" href="#model" role="tab" aria-controls="model" aria-expanded="false">Network structure</a></li>
+          <li class="active" role="presentation"><a id="align-tab" data-toggle="tab" href="#align" role="tab" aria-controls="align" aria-expanded="true">Attention alignment</a></li>
+          <li role="presentation"><a id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-expanded="false">Qualitative results</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="model" class="row tab-pane fade" role="tabpanel" aria-labelledby="model-tab">
+            <img src="network.png" alt="Image-to-Markup encoder-decoder network architecture" width="833" height="1111">
+          </div>
+          <div id="align" class="row tab-pane fade in active" role="tabpanel" aria-labelledby="align-tab">
+            <p id="alignment-status" role="status">Loading the original attention examples…</p>
+          </div>
+          <div id="results" class="row tab-pane fade" role="tabpanel" aria-labelledby="results-tab">
+            <p id="results-status" role="status">Loading the original qualitative results…</p>
+            <div id="results-img" class="row"></div>
+          </div>
+        </div>
+        <p class="help">The alignment examples load a large data file and may take a moment. On a narrow screen, scroll within the visualization to see the full expression.</p>
+        <noscript><p>Enable JavaScript to explore the attention and result examples. The <a href="network.png">network diagram</a>, <a href="https://proceedings.mlr.press/v70/deng17a.html">paper</a>, and <a href="/data/">dataset documentation</a> are also available directly.</p></noscript>
+      </section>
+    </main>
+    <footer>Using IM2LATEX-100K in your research? See the <a href="/data/">original dataset, download links, and citation instructions</a>.</footer>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="require.js"></script>
+  <script src="results.js"></script>
+  <script>require.config({ paths: { d3: "https://d3js.org/d3.v3.min" } });</script>
+  <script src="project.js"></script>
+</body>
+</html>

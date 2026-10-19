@@ -1,0 +1,38 @@
+[
+  {
+    "id": "pmlr-v70-deng17a",
+    "type": "paper-conference",
+    "title": "Image-to-Markup Generation with Coarse-to-Fine Attention",
+    "author": [
+      {
+        "family": "Deng",
+        "given": "Yuntian"
+      },
+      {
+        "family": "Kanervisto",
+        "given": "Anssi"
+      },
+      {
+        "family": "Ling",
+        "given": "Jeffrey"
+      },
+      {
+        "family": "Rush",
+        "given": "Alexander M."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 34th International Conference on Machine Learning",
+    "collection-title": "Proceedings of Machine Learning Research",
+    "volume": "70",
+    "page": "980-989",
+    "publisher": "PMLR",
+    "URL": "https://proceedings.mlr.press/v70/deng17a.html"
+  }
+]

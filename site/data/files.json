@@ -1,0 +1,75 @@
+{
+  "verified": "2026-10-19",
+  "url": "https://im2markup.yuntiandeng.com/data/",
+  "files": [
+    {
+      "file": "IM2LATEX-100K-HANDWRITTEN.tgz",
+      "bytes": 581380710,
+      "sha256": "b9d28d9c729724ea6406483e30e4b45b1c01b4e27ca1291079be93166a4c020f"
+    },
+    {
+      "file": "formula_images.tar.gz",
+      "bytes": 292150187,
+      "sha256": "9d00e1bb4a81c6319c4aa2f698ef120008e70f3a9db72a45d3cfffa0c9f8f286"
+    },
+    {
+      "file": "formula_images_processed.tar.gz",
+      "bytes": 617179219,
+      "sha256": "81a88baae7a1775dfcb178822574ee95852a014c46ce664b205594f0784bdb4b"
+    },
+    {
+      "file": "im2latex_formulas.lst",
+      "bytes": 12323106,
+      "sha256": "6479de37f683a13cc78c5725d13a724855ee8d213f2051212613512305a00041",
+      "lines": 103559
+    },
+    {
+      "file": "im2latex_formulas.norm.lst",
+      "bytes": 18115640,
+      "sha256": "5f86f637c486128fae8e9f79b2aa1ce7c49af60626448267a564e8861d570c07",
+      "lines": 103559
+    },
+    {
+      "file": "im2latex_formulas.tok.lst",
+      "bytes": 15910861,
+      "sha256": "4405cf2ce4179a6eab814012bf2728d0442d903aa60d9363385239a201ea9f4a",
+      "lines": 103559
+    },
+    {
+      "file": "im2latex_test.lst",
+      "bytes": 237384,
+      "sha256": "ad1e1e1487c36b9001f222bfad81b68b2dc6d8ddc9966c4238db9c28d93452b9",
+      "lines": 10355
+    },
+    {
+      "file": "im2latex_test_filter.lst",
+      "bytes": 216674,
+      "sha256": "21f59377bfbb83682389c2fc81b63f0c16dd06d47c35a00e9e17cbb711bff9a6",
+      "lines": 10355
+    },
+    {
+      "file": "im2latex_train.lst",
+      "bytes": 1923256,
+      "sha256": "bbdccd0cafc2342ed6f2445b8c80d8d81aada1dce41e91005f28189d0318ebf3",
+      "lines": 83884
+    },
+    {
+      "file": "im2latex_train_filter.lst",
+      "bytes": 1575352,
+      "sha256": "2ea81411c6ffbb18d6acc745691915acd43e08272c06d17a1c8cc657654e8d93",
+      "lines": 75275
+    },
+    {
+      "file": "im2latex_validate.lst",
+      "bytes": 213666,
+      "sha256": "0e9598bdddb1613f7b47e57c243130d0ea49ceb844aa250624daccab4eefb36c",
+      "lines": 9320
+    },
+    {
+      "file": "im2latex_validate_filter.lst",
+      "bytes": 175153,
+      "sha256": "97301db47887e331ebd0276065c6b587bbe338f040b5425cce2494c1e2d85f01",
+      "lines": 8370
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://im2markup.yuntiandeng.com/sitemap.xml
