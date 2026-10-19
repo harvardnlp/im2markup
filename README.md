@@ -31,7 +31,7 @@ See [the original interactive demo](https://im2markup.yuntiandeng.com/demo.html)
 
     What You Get Is What You See: A Visual Markup Decompiler  
     Yuntian Deng, Anssi Kanervisto, and Alexander M. Rush
-    http://arxiv.org/pdf/1609.04938v1.pdf
+    https://arxiv.org/abs/1609.04938v1
 
 The static project and dataset documentation are maintained in [`site/`](site/). Dataset archives, pretrained weights, and recorded demo data remain available at their existing project-site URLs.
 

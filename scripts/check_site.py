@@ -1,5 +1,6 @@
 """Validate public research pages and their download/citation contracts."""
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
@@ -66,6 +67,14 @@ for name, url in (("index.html", "/"), ("data/index.html", "/data/"), ("demo.htm
 
 for name in ("index.html", "data/index.html"):
     text = (SITE / name).read_text()
+    for href, label in re.findall(r'<a\b[^>]*href="([^"]+)"[^>]*>(.*?)</a>', text, re.DOTALL):
+        parsed = urlparse(href)
+        if parsed.hostname != "arxiv.org":
+            continue
+        assert parsed.scheme == "https" and not parsed.path.endswith(".pdf"), (name, href)
+        if parsed.path.startswith("/pdf/"):
+            assert re.sub(r"<[^>]+>", "", label).strip() == "PDF", (name, href, "PDF link must be labeled")
+    assert 'href="https://arxiv.org/abs/1609.04938v1"' in text, (name, "Original-paper link must preserve v1")
     encoded = text.split('<script type="application/ld+json">')[1].split("</script>")[0]
     structured = json.loads(encoded)
     assert "Yuntian Deng" in encoded and "Anssi Kanervisto" in encoded
@@ -73,6 +82,9 @@ for name in ("index.html", "data/index.html"):
         assert structured == json.loads((SITE / "data/dataset.json").read_text())
     from html import unescape
     assert unescape(text.split('<pre id="bibtex">')[1].split("</pre>")[0]) == bib
+
+assert '<a href="https://arxiv.org/pdf/1609.04938v1">PDF</a>' in (SITE / "index.html").read_text()
+assert "https://arxiv.org/abs/1609.04938v1" in (ROOT / "README.md").read_text()
 
 ET.parse(SITE / "sitemap.xml")
 assert "Sitemap: " + ORIGIN + "/sitemap.xml" in (SITE / "robots.txt").read_text()
