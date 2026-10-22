@@ -80,6 +80,7 @@ for name in ("index.html", "data/index.html"):
     assert "Yuntian Deng" in encoded and "Anssi Kanervisto" in encoded
     if name.startswith("data/"):
         assert structured == json.loads((SITE / "data/dataset.json").read_text())
+        assert structured["license"] == "https://creativecommons.org/publicdomain/zero/1.0/"
     from html import unescape
     assert unescape(text.split('<pre id="bibtex">')[1].split("</pre>")[0]) == bib
 

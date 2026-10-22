@@ -9,6 +9,7 @@
   ],
   "description": "Mathematical expression images paired with LaTeX source, introduced in the image-to-markup research of Yuntian Deng and collaborators. This page documents the original archive, hosted raw and processed files, and Hugging Face exports.",
   "url": "https://im2markup.yuntiandeng.com/data/",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "creator": [
     {
       "@type": "Person",
