@@ -32,3 +32,17 @@ preferred-citation:
   start: 980
   end: 989
   url: "https://proceedings.mlr.press/v70/deng17a.html"
+references:
+  - type: article
+    title: "What You Get Is What You See: A Visual Markup Decompiler"
+    authors:
+      - family-names: Deng
+        given-names: Yuntian
+      - family-names: Kanervisto
+        given-names: Anssi
+      - family-names: Rush
+        given-names: Alexander M.
+    year: 2016
+    month: 9
+    journal: "arXiv:1609.04938v1"
+    url: "https://arxiv.org/abs/1609.04938v1"

@@ -27,49 +27,87 @@
       "url": "https://rush-nlp.com/"
     }
   ],
-  "citation": {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "@id": "https://im2markup.yuntiandeng.com/#paper",
-    "name": "Image-to-Markup Generation with Coarse-to-Fine Attention",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "Yuntian Deng",
-        "url": "https://yuntiandeng.com/"
+  "citation": [
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": "https://im2markup.yuntiandeng.com/#paper",
+      "name": "Image-to-Markup Generation with Coarse-to-Fine Attention",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Yuntian Deng",
+          "url": "https://yuntiandeng.com/"
+        },
+        {
+          "@type": "Person",
+          "name": "Anssi Kanervisto",
+          "url": "https://github.com/Miffyli"
+        },
+        {
+          "@type": "Person",
+          "name": "Jeffrey Ling",
+          "url": "https://github.com/jeffreyling"
+        },
+        {
+          "@type": "Person",
+          "name": "Alexander M. Rush",
+          "url": "https://rush-nlp.com/"
+        }
+      ],
+      "datePublished": "2017",
+      "url": "https://proceedings.mlr.press/v70/deng17a.html",
+      "sameAs": "https://arxiv.org/abs/1609.04938v2",
+      "isPartOf": {
+        "@type": "PublicationVolume",
+        "name": "Proceedings of Machine Learning Research",
+        "volumeNumber": "70"
       },
-      {
-        "@type": "Person",
-        "name": "Anssi Kanervisto",
-        "url": "https://github.com/Miffyli"
+      "pageStart": "980",
+      "pageEnd": "989",
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://proceedings.mlr.press/v70/deng17a/deng17a.pdf",
+        "encodingFormat": "application/pdf"
       },
-      {
-        "@type": "Person",
-        "name": "Jeffrey Ling",
-        "url": "https://github.com/jeffreyling"
-      },
-      {
-        "@type": "Person",
-        "name": "Alexander M. Rush",
-        "url": "https://rush-nlp.com/"
+      "isBasedOn": {
+        "@id": "https://im2markup.yuntiandeng.com/#paper-2016"
       }
-    ],
-    "datePublished": "2017",
-    "url": "https://proceedings.mlr.press/v70/deng17a.html",
-    "sameAs": "https://arxiv.org/abs/1609.04938v2",
-    "isPartOf": {
-      "@type": "PublicationVolume",
-      "name": "Proceedings of Machine Learning Research",
-      "volumeNumber": "70"
     },
-    "pageStart": "980",
-    "pageEnd": "989",
-    "encoding": {
-      "@type": "MediaObject",
-      "contentUrl": "https://proceedings.mlr.press/v70/deng17a/deng17a.pdf",
-      "encodingFormat": "application/pdf"
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": "https://im2markup.yuntiandeng.com/#paper-2016",
+      "name": "What You Get Is What You See: A Visual Markup Decompiler",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Yuntian Deng",
+          "url": "https://yuntiandeng.com/"
+        },
+        {
+          "@type": "Person",
+          "name": "Anssi Kanervisto",
+          "url": "https://github.com/Miffyli"
+        },
+        {
+          "@type": "Person",
+          "name": "Alexander M. Rush",
+          "url": "https://rush-nlp.com/"
+        }
+      ],
+      "datePublished": "2016-09-16",
+      "version": "arXiv v1",
+      "url": "https://arxiv.org/abs/1609.04938v1",
+      "identifier": "arXiv:1609.04938v1",
+      "description": "The original Image-to-Markup paper introduces IM2LATEX-100K and learns to recover LaTeX and HTML from rendered images.",
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://arxiv.org/pdf/1609.04938v1",
+        "encodingFormat": "application/pdf"
+      }
     }
-  },
+  ],
   "sameAs": "https://doi.org/10.5281/zenodo.56198",
   "datePublished": "2016",
   "keywords": [
@@ -159,7 +197,12 @@
       "encodingFormat": "text/plain"
     }
   ],
-  "subjectOf": {
-    "@id": "https://im2markup.yuntiandeng.com/#paper"
-  }
+  "subjectOf": [
+    {
+      "@id": "https://im2markup.yuntiandeng.com/#paper-2016"
+    },
+    {
+      "@id": "https://im2markup.yuntiandeng.com/#paper"
+    }
+  ]
 }

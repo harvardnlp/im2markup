@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Training and evaluating image-to-LaTeX models with IM2LATEX-100K</title>
+  <meta name="description" content="Train and evaluate image-to-LaTeX models with the original IM2LATEX-100K dataset by Yuntian Deng and collaborators: choose a release, load data, preserve splits, normalize targets, evaluate predictions, and cite the 2016 and ICML 2017 papers.">
+  <link rel="canonical" href="https://im2markup.yuntiandeng.com/guide/">
+  <meta property="og:title" content="Training and evaluating image-to-LaTeX models with IM2LATEX-100K">
+  <meta property="og:description" content="A practical guide to IM2LATEX-100K releases, loading, preprocessing, training, evaluation, and original research attribution.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://im2markup.yuntiandeng.com/guide/">
+  <meta property="og:image" content="https://im2markup.yuntiandeng.com/mathex.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/site.css">
+  <link rel="alternate" type="application/x-bibtex" href="/citation.bib" title="ICML 2017 citation">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://im2markup.yuntiandeng.com/guide/#guide", "headline": "Training and evaluating image-to-LaTeX models with IM2LATEX-100K", "description": "A practical guide to original IM2LATEX-100K dataset releases, loading, preprocessing, model training, evaluation, and research citation.", "url": "https://im2markup.yuntiandeng.com/guide/", "mainEntityOfPage": "https://im2markup.yuntiandeng.com/guide/", "author": {"@type": "Person", "name": "Yuntian Deng", "url": "https://yuntiandeng.com/"}, "about": {"@type": "Dataset", "@id": "https://im2markup.yuntiandeng.com/data/#dataset", "name": "IM2LATEX-100K", "url": "https://im2markup.yuntiandeng.com/data/"}, "citation": [{"@context": "https://schema.org", "@type": "ScholarlyArticle", "@id": "https://im2markup.yuntiandeng.com/#paper", "name": "Image-to-Markup Generation with Coarse-to-Fine Attention", "author": [{"@type": "Person", "name": "Yuntian Deng", "url": "https://yuntiandeng.com/"}, {"@type": "Person", "name": "Anssi Kanervisto", "url": "https://github.com/Miffyli"}, {"@type": "Person", "name": "Jeffrey Ling", "url": "https://github.com/jeffreyling"}, {"@type": "Person", "name": "Alexander M. Rush", "url": "https://rush-nlp.com/"}], "datePublished": "2017", "url": "https://proceedings.mlr.press/v70/deng17a.html", "sameAs": "https://arxiv.org/abs/1609.04938v2", "isPartOf": {"@type": "PublicationVolume", "name": "Proceedings of Machine Learning Research", "volumeNumber": "70"}, "pageStart": "980", "pageEnd": "989", "encoding": {"@type": "MediaObject", "contentUrl": "https://proceedings.mlr.press/v70/deng17a/deng17a.pdf", "encodingFormat": "application/pdf"}, "isBasedOn": {"@id": "https://im2markup.yuntiandeng.com/#paper-2016"}}, {"@context": "https://schema.org", "@type": "ScholarlyArticle", "@id": "https://im2markup.yuntiandeng.com/#paper-2016", "name": "What You Get Is What You See: A Visual Markup Decompiler", "author": [{"@type": "Person", "name": "Yuntian Deng", "url": "https://yuntiandeng.com/"}, {"@type": "Person", "name": "Anssi Kanervisto", "url": "https://github.com/Miffyli"}, {"@type": "Person", "name": "Alexander M. Rush", "url": "https://rush-nlp.com/"}], "datePublished": "2016-09-16", "version": "arXiv v1", "url": "https://arxiv.org/abs/1609.04938v1", "identifier": "arXiv:1609.04938v1", "description": "The original Image-to-Markup paper introduces IM2LATEX-100K and learns to recover LaTeX and HTML from rendered images.", "encoding": {"@type": "MediaObject", "contentUrl": "https://arxiv.org/pdf/1609.04938v1", "encodingFormat": "application/pdf"}}], "image": "https://im2markup.yuntiandeng.com/mathex.png", "inLanguage": "en", "isAccessibleForFree": true}</script>
+  <script src="/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="/">Image-to-Markup <span class="small">/ im2latex</span></a>
+    <nav class="nav" aria-label="Main navigation"><a href="/">Research</a><a href="/data/">Dataset</a><a href="/guide/" aria-current="page">Guide</a><a href="/demo.html">Demo</a><a href="https://github.com/harvardnlp/im2markup">Code ↗</a></nav>
+  </div></header>
+  <main id="main" class="wrap guide">
+    <section class="hero">
+      <p class="eyebrow">IM2LATEX-100K / practical guide</p>
+      <h1>Training and evaluating image-to-LaTeX models with IM2LATEX-100K</h1>
+      <p class="subtitle">Choose a dataset release, load image–formula pairs, train a model, and evaluate it with a reproducible protocol.</p>
+      <p>IM2LATEX-100K was introduced by <a href="https://yuntiandeng.com/">Yuntian Deng</a>, Anssi Kanervisto, and Alexander M. Rush in <a href="https://arxiv.org/abs/1609.04938v1"><em>What You Get Is What You See: A Visual Markup Decompiler</em> (2016)</a>. That work studies recovering both LaTeX and HTML from images. The recommended research and dataset citation is <a href="https://proceedings.mlr.press/v70/deng17a.html"><em>Image-to-Markup Generation with Coarse-to-Fine Attention</em> (ICML 2017)</a>, by Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush.</p>
+      <div class="actions"><a class="button primary" href="/data/">Original dataset and downloads</a><a class="button" href="#load">Load an example</a><a class="button" href="#citation">Copy the citation</a></div>
+    </section>
+    <nav class="jump" aria-label="On this page"><a href="#release">Choose a release</a><a href="#load">Load data</a><a href="#preprocessing">Preprocessing</a><a href="#training">Training</a><a href="#historical">Original implementation</a><a href="#evaluation">Evaluation</a><a href="#citation">Citation</a></nav>
+
+    <section class="section" id="release">
+      <p class="eyebrow">1 / choose the data</p>
+      <h2>Use one documented release.</h2>
+      <p>The <a href="/data/">original IM2LATEX-100K dataset page</a> provides raw and processed downloads, split files, and checksums. The <a href="https://zenodo.org/records/56198">original Zenodo archive</a> was prepared and deposited by coauthor Anssi Kanervisto. The two Hugging Face exports maintained by Yuntian Deng provide smaller subsets in Parquet format.</p>
+      <div class="table-wrap"><table>
+        <caption class="small" style="text-align:left;padding:13px 16px">Counts identify different distributions; they are not interchangeable test sets.</caption>
+        <thead><tr><th scope="col">Release</th><th scope="col" class="number">Train</th><th scope="col" class="number">Validation</th><th scope="col" class="number">Test</th><th scope="col">Use it for</th></tr></thead>
+        <tbody>
+          <tr><td>ICML 2017 paper</td><td class="number">83,883</td><td class="number">9,319</td><td class="number">10,354</td><td>The paper’s reported benchmark sizes.</td></tr>
+          <tr><td><a href="/data/#raw-files">Hosted raw lists</a></td><td class="number">83,884</td><td class="number">9,320</td><td class="number">10,355</td><td>Original formula sources and split membership.</td></tr>
+          <tr><td><a href="/data/#processed-files">Hosted processed lists</a></td><td class="number">75,275</td><td class="number">8,370</td><td class="number">10,355</td><td>The repository’s processed-image and normalized-target workflow. Test is format-converted without filtering.</td></tr>
+          <tr><td><a href="https://huggingface.co/datasets/yuntian-deng/im2latex-100k">HF normalized export</a></td><td class="number">55,033</td><td class="number">6,072</td><td class="number">6,810</td><td>Ready-to-load image pairs with normalized targets.</td></tr>
+          <tr><td><a href="https://huggingface.co/datasets/yuntian-deng/im2latex-100k-raw">HF formula-variant export</a></td><td class="number">165,099</td><td class="number">18,216</td><td class="number">20,430</td><td>Three target representations for each source row: <code>none</code>, <code>tokenized</code>, and <code>normalized</code>.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The HF repository named <code>im2latex-100k-raw</code> contains 203,745 variant rows, representing the same 67,915 source rows as the normalized export. It does not contain 203,745 independent formula images or the complete original archive. Its <code>preprocessing</code> field describes the target string, not a transformation to apply to the image.</p>
+      <div class="note"><p><strong>Keep the comparison tied to its data.</strong> A result on the HF test split is a result on 6,810 exported rows. Compare it with the paper’s test results after aligning the actual examples, preprocessing, decoding, and evaluation protocol. The exact additional selection and image export recipe for the 2022 HF exports is not recorded in those repositories.</p></div>
+    </section>
+
+    <section class="section" id="load">
+      <p class="eyebrow">2 / inspect before training</p>
+      <h2>Load a pinned example.</h2>
+      <p>This Python example uses Hugging Face <code>datasets</code> and Pillow. It streams the normalized training split at a fixed repository revision and inspects one image–formula pair without materializing the full dataset. Streaming reads the required remote Parquet data; it is not a promise of one-image network traffic.</p>
+      <pre id="load-normalized"><code>from contextlib import closing
+from io import BytesIO
+from PIL import Image
+from datasets import Image as DatasetImage, load_dataset
+
+repo = "yuntian-deng/im2latex-100k"
+revision = "2cf5f2534bc6d9fb2a333cc99b46c0d331553200"
+train = load_dataset(
+    repo, revision=revision, split="train", streaming=True, token=False
+)
+train = train.cast_column("image", DatasetImage(decode=False))
+with closing(iter(train)) as rows:
+    row = next(rows)
+image = Image.open(BytesIO(row["image"]["bytes"])).convert("RGB")
+print(row["filename"], image.size)
+print(row["formula"])</code></pre>
+      <p>The available split names are <code>train</code>, <code>val</code>, and <code>test</code>. Each normalized row contains <code>image</code>, <code>formula</code>, and <code>filename</code>. Keep the repository, commit revision, split, and row position alongside predictions; a filename is not a unique row identifier. Inspect the image size and preserve the model’s required channel and pixel normalization conventions.</p>
+      <h3>Select one target representation</h3>
+      <p>For the companion export, filter on <code>preprocessing</code>. The filter below is lazy and scans rows until it finds the selected representation. Use <code>"tokenized"</code> or <code>"normalized"</code> in place of <code>"none"</code> for the other targets.</p>
+      <pre id="load-variants"><code>variants = load_dataset(
+    "yuntian-deng/im2latex-100k-raw",
+    revision="7bbe85a01359115dcea263bccb35c14d444198c4",
+    split="train", streaming=True, token=False,
+).cast_column("image", DatasetImage(decode=False))
+raw_targets = variants.filter(
+    lambda mode: mode == "none", input_columns=["preprocessing"]
+)
+with closing(iter(raw_targets)) as rows:
+    raw_row = next(rows)
+print(raw_row["filename"], raw_row["preprocessing"], raw_row["formula"])</code></pre>
+      <h3>Preserve memberships and check overlap</h3>
+      <p>The existing normalized export contains 12 training filenames twice, four filenames shared by training and validation, and two shared by training and test. The variant export inherits these memberships. The dataset cards document these filename checks; they are not an exhaustive image or semantic deduplication audit.</p>
+      <p>For a comparison using the released splits, preserve and report them. For a new split, group all variants and repeated source examples before splitting, and check source, image, and formula overlap. Keep a manifest of every retained and excluded row. Never shuffle all three representations into independent train and test rows: that puts the same source example on both sides of the evaluation.</p>
+    </section>
+
+    <section class="section" id="preprocessing">
+      <p class="eyebrow">3 / preserve the supervision</p>
+      <h2>Keep images, indices, and targets aligned.</h2>
+      <h3>Original file indices are zero-based</h3>
+      <p>A raw split line has the form <code>formula_index image_name render_type</code>; the image name has no extension. A processed split line has the form <code>image_filename formula_index</code>, with the extension included. Both indices select a line in the corresponding formula list. Each hosted formula list has 103,559 indexed lines.</p>
+      <pre id="read-original"><code># Python 3: LF separates formula records. Preserve blank records and raw bytes.
+with open("im2latex_formulas.lst", "rb") as source:
+    formulas = [line[:-1] if line.endswith(b"\n") else line for line in source]
+
+with open("im2latex_train.lst", encoding="ascii") as split_file:
+    formula_index, image_name, render_type = next(split_file).split()
+
+formula_bytes = formulas[int(formula_index)]
+image_filename = image_name + ".png"
+print(image_filename, formula_index, len(formula_bytes))</code></pre>
+      <p>Do not remove blank normalized or tokenized lines, renumber surviving lines, or use a parser that treats embedded carriage returns as extra formula records. The byte-preserving reader above splits on LF. Decide and record a text-decoding policy separately: the HF <code>none</code> targets omit invalid UTF-8 bytes present in 13 training rows and one validation row of the original source. Preserve the original bytes when exact source recovery matters.</p>
+      <h3>Choose the target before tokenizing it for the model</h3>
+      <p><code>none</code> retains the source-style formula; <code>tokenized</code> separates LaTeX tokens; <code>normalized</code> rewrites parsed expressions into the project’s normalized form. Different LaTeX strings render the same expression. Fix one representation for supervision and state the transformation used for evaluation. Fit a new vocabulary on training data, then freeze it for validation and test.</p>
+      <p>The historical <a href="https://github.com/harvardnlp/im2markup/blob/master/scripts/preprocessing/preprocess_formulas.py">formula preprocessor</a> calls the repository’s Node/KaTeX parser and preserves one output line per input line. Parser failures leave targets that the filtering step rejects when blank. The <a href="https://github.com/harvardnlp/im2markup/blob/master/scripts/preprocessing/preprocess_filter.py">filter</a> excludes missing or oversized images, blank targets, and targets over its length limit from training and validation. The original test conversion uses <code>--no-filter</code>.</p>
+      <h3>Record image preprocessing independently</h3>
+      <p>The original <a href="https://github.com/harvardnlp/im2markup/blob/master/scripts/preprocessing/preprocess_images.py">image pipeline</a> crops the formula, pads it with white space, groups it into a size bucket, and downsamples it. Its defaults add eight pixels of padding on each side before bucket padding and downsample by a factor of two. Reusing the hosted processed images avoids applying this sequence twice. For a new model, record cropping, resizing, aspect-ratio handling, channels, padding, and pixel scaling; use the same policy at inference.</p>
+    </section>
+
+    <section class="section" id="training">
+      <p class="eyebrow">4 / train a model</p>
+      <h2>Define the image-to-sequence contract.</h2>
+      <p>An image-to-LaTeX model encodes the formula image and decodes a sequence of markup tokens. The original model combines a convolutional image encoder, a row encoder, and an attention-based recurrent decoder. A new encoder–decoder implementation must preserve the same supervision contract:</p>
+      <ol class="resources">
+        <li><strong>Image input:</strong> feed the processed formula image to the visual encoder. When a model supports an image mask, mark padding according to that model’s documented convention.</li>
+        <li><strong>Teacher forcing:</strong> for target tokens <code>t1 … tn</code>, the decoder input is <code>BOS t1 … tn</code> and its prediction targets are <code>t1 … tn EOS</code>. Use the chosen framework’s shift operation exactly once.</li>
+        <li><strong>Loss and masks:</strong> compute token prediction loss on real target positions, including EOS. Exclude padded target positions. Apply causal and padding masks according to the decoder API; do not assume that a token’s numeric ID is the loss ignore value.</li>
+        <li><strong>Validation:</strong> select checkpoints and decoding settings using <code>val</code>. Generate test predictions from the image and the start token, without supplying the gold target prefix.</li>
+        <li><strong>Decoding:</strong> save the beam size or sampling policy, maximum output length, EOS behavior, and every truncated or failed prediction. A maximum-length cutoff changes the measured result.</li>
+      </ol>
+      <p>The original <a href="https://github.com/harvardnlp/im2markup/blob/master/src/data/data_gen.lua">data loader</a> constructs shifted targets and batches images with identical dimensions. Its special IDs are padding 1, start 2, end 3, and unknown 4; the <a href="https://github.com/harvardnlp/im2markup/blob/master/src/model/criterion.lua">loss</a> assigns zero weight to padding. Those IDs belong to the Torch implementation. Use your own tokenizer’s IDs in a different model.</p>
+      <p>This section specifies the training inputs and checks for a new implementation. The commands below document the original implementation and its sample data.</p>
+    </section>
+
+    <section class="section" id="historical">
+      <p class="eyebrow">Original implementation</p>
+      <h2>The Torch7 workflow.</h2>
+      <p>The <a href="https://github.com/harvardnlp/im2markup">original repository</a> includes a toy formula dataset and these preprocessing, training, and prediction paths. Run the commands from its repository root. They require the historical Torch7/CUDA/cuDNN environment and Python 2-era preprocessing dependencies listed in the README, together with Node/KaTeX for normalization. They are historical commands, not a newly validated installation or training run.</p>
+      <h3>Prepare the included sample data</h3>
+      <pre><code>python scripts/preprocessing/preprocess_images.py \
+  --input-dir data/sample/images --output-dir data/sample/images_processed
+python scripts/preprocessing/preprocess_formulas.py --mode normalize \
+  --input-file data/sample/formulas.lst --output-file data/sample/formulas.norm.lst
+
+python scripts/preprocessing/preprocess_filter.py --filter \
+  --image-dir data/sample/images_processed --label-path data/sample/formulas.norm.lst \
+  --data-path data/sample/train.lst --output-path data/sample/train_filter.lst
+python scripts/preprocessing/preprocess_filter.py --filter \
+  --image-dir data/sample/images_processed --label-path data/sample/formulas.norm.lst \
+  --data-path data/sample/validate.lst --output-path data/sample/validate_filter.lst
+python scripts/preprocessing/preprocess_filter.py --no-filter \
+  --image-dir data/sample/images_processed --label-path data/sample/formulas.norm.lst \
+  --data-path data/sample/test.lst --output-path data/sample/test_filter.lst
+
+python scripts/preprocessing/generate_latex_vocab.py \
+  --data-path data/sample/train_filter.lst --label-path data/sample/formulas.norm.lst \
+  --output-file data/sample/latex_vocab.txt</code></pre>
+      <p>The default training/validation filter limits images to 500 × 160 pixels and targets to 150 tokens. Vocabulary generation keeps tokens whose training frequency exceeds one. For the full hosted processed release, supply its image directory, normalized formula list, and processed split lists instead; skip transformations already applied to those files.</p>
+      <h3>Train and write predictions</h3>
+      <pre><code>th src/train.lua -phase train -gpu_id 1 \
+  -model_dir model/sample -input_feed -prealloc \
+  -data_base_dir data/sample/images_processed/ \
+  -data_path data/sample/train_filter.lst \
+  -val_data_path data/sample/validate_filter.lst \
+  -label_path data/sample/formulas.norm.lst \
+  -vocab_file data/sample/latex_vocab.txt \
+  -max_num_tokens 150 -max_image_width 500 -max_image_height 160 \
+  -batch_size 20 -beam_size 1
+
+th src/train.lua -phase test -gpu_id 1 -load_model \
+  -model_dir model/sample -visualize -output_dir results/sample \
+  -data_base_dir data/sample/images_processed/ \
+  -data_path data/sample/test_filter.lst \
+  -label_path data/sample/formulas.norm.lst \
+  -max_num_tokens 500 -max_image_width 800 -max_image_height 800 \
+  -batch_size 5 -beam_size 5</code></pre>
+      <p><code>-visualize</code> enables prediction output at <code>results/sample/results.txt</code>. Each row has five tab-separated fields: image filename, gold formula, predicted formula, prediction score, and gold score. The model’s vocabulary is stored in its checkpoint. Check that <code>model/sample/final-model</code> exists before testing: <code>-load_model</code> loads that file when present; it does not by itself establish that a checkpoint was loaded.</p>
+      <p>The loader skips images it cannot load or that exceed the configured image limits, and truncates long targets. Audit the emitted predictions against the complete evaluation manifest. Use <code>th src/train.lua -h</code> and the <a href="https://github.com/harvardnlp/im2markup/blob/master/src/train.lua">actual options</a> when changing the configuration.</p>
+    </section>
+
+    <section class="section" id="evaluation">
+      <p class="eyebrow">5 / evaluate every test example</p>
+      <h2>State the metric and its denominator.</h2>
+      <p>Keep a fixed test manifest and emit one prediction status for every row. Count missing, invalid, and truncated predictions explicitly. For exact accuracy, divide the number of successful matches by the full declared evaluation count; a missing prediction is a failure. Report any separately defined subset alongside its membership rule and size.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">Metric</th><th scope="col">What it measures</th><th scope="col">What to report</th></tr></thead>
+        <tbody>
+          <tr><td>Exact string / token match</td><td>Whether prediction and reference are identical under the stated text representation.</td><td>Normalization, tokenization, whitespace handling, and full test count. Equivalent renderings need not have identical LaTeX strings.</td></tr>
+          <tr><td>BLEU</td><td>Token n-gram agreement across predictions and references.</td><td>Tokenizer and BLEU implementation/options. BLEU is not exact formula accuracy.</td></tr>
+          <tr><td>Token edit score</td><td>The historical script reports <code>1 − Σ edit_distance / Σ max(reference_length, prediction_length)</code>.</td><td>The exact normalization and which examples entered both sums.</td></tr>
+          <tr><td>Rendered-image match and edit score</td><td>Agreement after rendering both gold and predicted LaTeX in the same environment.</td><td>TeX packages, fonts, renderer, resolution, cropping, matching tolerances, blank-column handling, and render failures.</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Original evaluation commands</h3>
+      <pre><code>python scripts/evaluation/evaluate_bleu.py \
+  --result-path results/sample/results.txt \
+  --data-path data/sample/test_filter.lst --label-path data/sample/formulas.norm.lst
+
+python scripts/evaluation/evaluate_text_edit_distance.py \
+  --result-path results/sample/results.txt
+
+python scripts/evaluation/render_latex.py \
+  --result-path results/sample/results.txt \
+  --data-path data/sample/test_filter.lst --label-path data/sample/formulas.lst \
+  --output-dir results/sample/rendered --no-replace
+python scripts/evaluation/evaluate_image.py \
+  --images-dir results/sample/rendered/</code></pre>
+      <p>Rendering uses the <strong>original, unnormalized formula list</strong> for gold references, so gold and predictions are rendered with the same template. The historical renderer uses <code>pdflatex</code>, ImageMagick at 200 DPI, and cropping. Use a fresh output directory for a new set of predictions: <code>--no-replace</code> reuses existing rendered files.</p>
+      <div class="note"><p><strong>Check what each script counts.</strong> <a href="https://github.com/harvardnlp/im2markup/blob/master/scripts/evaluation/evaluate_bleu.py">BLEU</a> rebuilds references from the test list and fills missing predictions with blank strings; it keys them by filename. <a href="https://github.com/harvardnlp/im2markup/blob/master/scripts/evaluation/evaluate_text_edit_distance.py">Text edit scoring</a> reads valid five-field prediction rows and does not restore omitted examples. <a href="https://github.com/harvardnlp/im2markup/blob/master/scripts/evaluation/evaluate_image.py">Image scoring</a> iterates files present in <code>images_gold</code> and counts missing predicted renders as failures; gold render failures are absent from that file-based denominator. Reconcile each output with the test manifest before comparing scores.</p></div>
+      <p>The historical image matcher binarizes pixels, compares image columns, and applies tolerance rules; it reports matching with and without blank columns. Its reported image accuracy is not strict byte-for-byte or pixel-for-pixel equality. Name the implementation and settings when reproducing that score, and label strict rendered equality separately if you compute it.</p>
+      <h3>Include enough information to repeat the comparison</h3>
+      <p>Record dataset repository and revision or file checksums; split membership and counts; target representation; image transforms; model and tokenizer versions; training configuration; checkpoint selection; decoding settings; metric implementation; and prediction/render failures. Keep original research citations and derivative contributions together. This makes a new model’s result interpretable without changing the benchmark’s history.</p>
+    </section>
+
+    <section class="section anchor" id="citation">
+      <p class="eyebrow">Citation and provenance</p>
+      <h2>Cite the research and identify the data.</h2>
+      <p class="citation"><strong>Recommended research and dataset citation:</strong> Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush. <a href="https://proceedings.mlr.press/v70/deng17a.html"><em>Image-to-Markup Generation with Coarse-to-Fine Attention.</em></a> ICML 2017, PMLR 70:980–989.</p>
+      <div class="citation-tools"><button type="button" data-copy="bibtex" hidden>Copy BibTeX</button><a href="/citation.bib" download>Download BibTeX</a><a href="/citation.csl.json" download>CSL-JSON</a><a href="/CITATION.cff" download>CITATION.cff</a></div>
+      <pre id="bibtex">@inproceedings{pmlr-v70-deng17a,
+  title = {Image-to-Markup Generation with Coarse-to-Fine Attention},
+  author = {Deng, Yuntian and Kanervisto, Anssi and Ling, Jeffrey and Rush, Alexander M.},
+  booktitle = {Proceedings of the 34th International Conference on Machine Learning},
+  pages = {980--989},
+  year = {2017},
+  volume = {70},
+  series = {Proceedings of Machine Learning Research},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v70/deng17a.html}
+}</pre>
+      <p id="copy-status" class="status" role="status" aria-live="polite"></p>
+      <h3>The original 2016 paper</h3>
+      <p class="citation"><strong>Yuntian Deng, Anssi Kanervisto, and Alexander M. Rush.</strong> <a href="https://arxiv.org/abs/1609.04938v1"><em>What You Get Is What You See: A Visual Markup Decompiler.</em></a> 16 September 2016, arXiv:1609.04938v1. This first version introduces IM2LATEX-100K and studies both image-to-LaTeX and image-to-HTML. The later ICML paper has its own title and adds Jeffrey Ling to the author list.</p>
+      <p><a href="/citation-2016.bib" download>Download the original 2016 BibTeX</a></p>
+      <pre>@article{deng2016visualmarkup,
+  title = {What You Get Is What You See: A Visual Markup Decompiler},
+  author = {Deng, Yuntian and Kanervisto, Anssi and Rush, Alexander M.},
+  journal = {arXiv preprint arXiv:1609.04938v1},
+  year = {2016},
+  url = {https://arxiv.org/abs/1609.04938v1}
+}</pre>
+      <p>Identify the distribution actually used, including its revision and preprocessing. For the original archive, cite <a href="https://doi.org/10.5281/zenodo.56198">Anssi Kanervisto’s IM2LATEX-100K release, DOI 10.5281/zenodo.56198</a>. When using a mirror, subset, or later model, retain the original dataset and research attribution and credit the additional contribution alongside it.</p>
+      <p class="small">IM2LATEX-100K contains rendered printed mathematical expressions. The project’s separate synthetic handwritten-expression archive and HTML data have different tasks and protocols; the HF formula exports do not contain them. See the <a href="/data/">dataset page</a> for the original files, scope, and license information.</p>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><p>Image-to-Markup · im2latex · <a href="https://yuntiandeng.com/">Yuntian Deng</a> and collaborators</p><p><a href="/data/">Dataset &amp; provenance</a> · <a href="/citation.bib">BibTeX</a> · <a href="https://github.com/harvardnlp/im2markup">Source</a></p></div></footer>
+</body>
+</html>

@@ -34,5 +34,36 @@
     "page": "980-989",
     "publisher": "PMLR",
     "URL": "https://proceedings.mlr.press/v70/deng17a.html"
+  },
+  {
+    "id": "deng2016visualmarkup",
+    "type": "article",
+    "title": "What You Get Is What You See: A Visual Markup Decompiler",
+    "author": [
+      {
+        "family": "Deng",
+        "given": "Yuntian"
+      },
+      {
+        "family": "Kanervisto",
+        "given": "Anssi"
+      },
+      {
+        "family": "Rush",
+        "given": "Alexander M."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          9,
+          16
+        ]
+      ]
+    },
+    "container-title": "arXiv",
+    "number": "1609.04938v1",
+    "URL": "https://arxiv.org/abs/1609.04938v1"
   }
 ]
