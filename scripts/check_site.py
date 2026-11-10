@@ -39,7 +39,7 @@ class Page(HTMLParser):
 
 
 def paper_records(value):
-    """Find publication records within a graph or an Article/Dataset citation."""
+    """Find publication records in structured data."""
     if isinstance(value, dict):
         if value.get("@type") == "ScholarlyArticle":
             yield value
@@ -135,6 +135,10 @@ for name in ("index.html", "data/index.html"):
     assert "Yuntian Deng" in encoded and "Anssi Kanervisto" in encoded
     if name.startswith("data/"):
         assert structured == json.loads((SITE / "data/dataset.json").read_text())
+        assert structured["citation"] == [
+            "https://proceedings.mlr.press/v70/deng17a.html",
+            "https://arxiv.org/abs/1609.04938v1",
+        ], "Dataset citations must link directly to the two papers"
         assert structured["license"] == "https://creativecommons.org/publicdomain/zero/1.0/"
         assert [a["name"] for a in structured["creator"]] == AUTHORS_2016
         assert {c["@id"] for c in structured["subjectOf"]} == {ORIGIN + "/#paper-2016", ORIGIN + "/#paper"}
