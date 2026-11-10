@@ -145,7 +145,11 @@ for name in ("index.html", "data/index.html", "guide/index.html"):
     visible = " ".join(Page(SITE / name).visible_text)
     assert TITLE_2016 in visible and TITLE_2017 in visible, (name, "Both paper titles must be readable")
 guide = (SITE / "guide/index.html").read_text()
-check_publications(json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', guide, re.S)[1]))
+guide_article = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', guide, re.S)[1])
+check_publications(guide_article)
+canonical_dataset = json.loads((SITE / "data/dataset.json").read_text())
+for field in ("@id", "@type", "name", "url", "description", "license", "creator"):
+    assert guide_article["about"][field] == canonical_dataset[field], ("guide dataset", field)
 
 assert '<a href="https://arxiv.org/pdf/1609.04938v1">PDF</a>' in (SITE / "index.html").read_text()
 assert "https://arxiv.org/abs/1609.04938v1" in (ROOT / "README.md").read_text()
