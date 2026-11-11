@@ -1,0 +1,22 @@
+html[lang="zh-Hans"]{--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;--serif:"Noto Serif CJK SC","Songti SC","STSong",Georgia,serif}
+html[lang="zh-Hans"] body{line-height:1.85}
+.zh-page h1,.zh-page h2{letter-spacing:0;line-height:1.3;word-break:normal;overflow-wrap:anywhere}
+.zh-page h1{font-size:clamp(2.4rem,5.5vw,4.1rem)}
+.zh-page h2{font-size:clamp(1.8rem,3.5vw,2.5rem)}
+.zh-page h3{line-height:1.55;overflow-wrap:anywhere}
+.zh-page .subtitle{line-height:1.8}
+.zh-page .eyebrow{letter-spacing:.07em;text-transform:none}
+.zh-page .section>p,.zh-page .section>ol,.zh-page .section>ul{max-width:960px}
+.zh-page .section>p+table,.zh-page .section>p+.table-wrap{margin-top:1.4rem}
+.zh-page .section h3{margin-top:1.6rem}
+.zh-page .columns h3:first-child{margin-top:0}
+.zh-page pre{margin:1.2rem 0;line-height:1.75;white-space:pre;overflow-x:auto;overflow-wrap:normal;word-break:normal;max-width:100%}
+.zh-page pre code{white-space:inherit;overflow-wrap:normal;word-break:normal}
+.zh-page .table-wrap{max-width:100%;margin-bottom:1.2rem}
+.zh-page caption{text-align:left;padding:13px 16px;color:var(--muted);font-size:.88rem}
+.zh-page .timeline li{grid-template-columns:155px minmax(0,1fr)}
+.zh-page .downloads li{align-items:start}
+.zh-page .scope-note{margin:0 0 2rem}
+.zh-page .citation-tools{margin-top:1rem}
+.zh-page [lang="en"]{line-height:1.55}
+@media(max-width:680px){.zh-page h1,.zh-page.guide .hero h1{font-size:clamp(2rem,8vw,2.8rem)}.zh-page .timeline li{grid-template-columns:1fr}.zh-page .hero{padding-top:38px}.zh-page .subtitle{font-size:1.1rem}.zh-page pre{font-size:12px}.nav{gap:.65rem 1rem}}

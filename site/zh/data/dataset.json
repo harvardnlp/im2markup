@@ -1,0 +1,226 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://im2markup.yuntiandeng.com/data/#dataset",
+  "name": "IM2LATEX-100K",
+  "alternateName": [
+    "im2latex-100k",
+    "Image-to-Markup dataset"
+  ],
+  "description": "IM2LATEX-100K 将数学公式图像与 LaTeX 源码配对，由 Yuntian Deng、Anssi Kanervisto 和 Alexander M. Rush 的 Image-to-Markup 研究提出。本页说明原始归档、原始与预处理下载、Hugging Face 导出版本、数据划分和原始论文引用。",
+  "url": "https://im2markup.yuntiandeng.com/data/",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Yuntian Deng",
+      "url": "https://yuntiandeng.com/"
+    },
+    {
+      "@type": "Person",
+      "name": "Anssi Kanervisto",
+      "url": "https://github.com/Miffyli"
+    },
+    {
+      "@type": "Person",
+      "name": "Alexander M. Rush",
+      "url": "https://rush-nlp.com/"
+    }
+  ],
+  "citation": [
+    "https://proceedings.mlr.press/v70/deng17a.html",
+    "https://arxiv.org/abs/1609.04938v1"
+  ],
+  "sameAs": "https://doi.org/10.5281/zenodo.56198",
+  "datePublished": "2016",
+  "keywords": [
+    "image-to-LaTeX",
+    "mathematical expression recognition",
+    "LaTeX",
+    "image-to-markup",
+    "im2latex"
+  ],
+  "isAccessibleForFree": true,
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "formula_images.tar.gz",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/formula_images.tar.gz",
+      "contentSize": "292150187 bytes",
+      "encodingFormat": "application/gzip"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "formula_images_processed.tar.gz",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/formula_images_processed.tar.gz",
+      "contentSize": "617179219 bytes",
+      "encodingFormat": "application/gzip"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_formulas.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_formulas.lst",
+      "contentSize": "12323106 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_formulas.norm.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_formulas.norm.lst",
+      "contentSize": "18115640 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_formulas.tok.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_formulas.tok.lst",
+      "contentSize": "15910861 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_test.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_test.lst",
+      "contentSize": "237384 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_test_filter.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_test_filter.lst",
+      "contentSize": "216674 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_train.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_train.lst",
+      "contentSize": "1923256 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_train_filter.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_train_filter.lst",
+      "contentSize": "1575352 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_validate.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_validate.lst",
+      "contentSize": "213666 bytes",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "im2latex_validate_filter.lst",
+      "contentUrl": "https://im2markup.yuntiandeng.com/data/im2latex_validate_filter.lst",
+      "contentSize": "175153 bytes",
+      "encodingFormat": "text/plain"
+    }
+  ],
+  "subjectOf": [
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": "https://im2markup.yuntiandeng.com/#paper-2016",
+      "name": "What You Get Is What You See: A Visual Markup Decompiler",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Yuntian Deng",
+          "url": "https://yuntiandeng.com/"
+        },
+        {
+          "@type": "Person",
+          "name": "Anssi Kanervisto",
+          "url": "https://github.com/Miffyli"
+        },
+        {
+          "@type": "Person",
+          "name": "Alexander M. Rush",
+          "url": "https://rush-nlp.com/"
+        }
+      ],
+      "datePublished": "2016-09-16",
+      "version": "arXiv v1",
+      "url": "https://arxiv.org/abs/1609.04938v1",
+      "identifier": "arXiv:1609.04938v1",
+      "description": "The original Image-to-Markup paper introduces IM2LATEX-100K and learns to recover LaTeX and HTML from rendered images.",
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://arxiv.org/pdf/1609.04938v1",
+        "encodingFormat": "application/pdf"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": "https://im2markup.yuntiandeng.com/#paper",
+      "name": "Image-to-Markup Generation with Coarse-to-Fine Attention",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Yuntian Deng",
+          "url": "https://yuntiandeng.com/"
+        },
+        {
+          "@type": "Person",
+          "name": "Anssi Kanervisto",
+          "url": "https://github.com/Miffyli"
+        },
+        {
+          "@type": "Person",
+          "name": "Jeffrey Ling",
+          "url": "https://github.com/jeffreyling"
+        },
+        {
+          "@type": "Person",
+          "name": "Alexander M. Rush",
+          "url": "https://rush-nlp.com/"
+        }
+      ],
+      "datePublished": "2017",
+      "url": "https://proceedings.mlr.press/v70/deng17a.html",
+      "sameAs": "https://arxiv.org/abs/1609.04938v2",
+      "isPartOf": {
+        "@type": "PublicationVolume",
+        "name": "Proceedings of Machine Learning Research",
+        "volumeNumber": "70"
+      },
+      "pageStart": "980",
+      "pageEnd": "989",
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://proceedings.mlr.press/v70/deng17a/deng17a.pdf",
+        "encodingFormat": "application/pdf"
+      },
+      "isBasedOn": {
+        "@id": "https://im2markup.yuntiandeng.com/#paper-2016"
+      }
+    }
+  ],
+  "mainEntityOfPage": [
+    {
+      "@type": "WebPage",
+      "@id": "https://im2markup.yuntiandeng.com/data/#webpage",
+      "url": "https://im2markup.yuntiandeng.com/data/",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://im2markup.yuntiandeng.com/zh/data/#webpage",
+      "url": "https://im2markup.yuntiandeng.com/zh/data/",
+      "name": "IM2LATEX-100K 公式识别数据集：下载、来源与引用",
+      "description": "IM2LATEX-100K 将数学公式图像与 LaTeX 源码配对，由 Yuntian Deng、Anssi Kanervisto 和 Alexander M. Rush 的 Image-to-Markup 研究提出。本页说明原始归档、原始与预处理下载、Hugging Face 导出版本、数据划分和原始论文引用。",
+      "inLanguage": "zh-Hans",
+      "isPartOf": {
+        "@id": "https://im2markup.yuntiandeng.com/"
+      },
+      "about": {
+        "@id": "https://im2markup.yuntiandeng.com/data/#dataset"
+      }
+    }
+  ]
+}
