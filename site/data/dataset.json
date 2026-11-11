@@ -7,7 +7,7 @@
     "im2latex-100k",
     "Image-to-Markup dataset"
   ],
-  "description": "Mathematical expression images paired with LaTeX source, introduced in the image-to-markup research of Yuntian Deng and collaborators. This page documents the original archive, hosted raw and processed files, and Hugging Face exports.",
+  "description": "Mathematical expression images paired with LaTeX source, introduced in the image-to-markup research of Yuntian Deng and collaborators. Distributions include the original archive, raw and processed project files, and Hugging Face exports.",
   "url": "https://im2markup.yuntiandeng.com/data/",
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "creator": [
@@ -213,7 +213,7 @@
       "@id": "https://im2markup.yuntiandeng.com/zh/data/#webpage",
       "url": "https://im2markup.yuntiandeng.com/zh/data/",
       "name": "IM2LATEX-100K 公式识别数据集：下载、来源与引用",
-      "description": "IM2LATEX-100K 将数学公式图像与 LaTeX 源码配对，由 Yuntian Deng、Anssi Kanervisto 和 Alexander M. Rush 的 Image-to-Markup 研究提出。本页说明原始归档、原始与预处理下载、Hugging Face 导出版本、数据划分和原始论文引用。",
+      "description": "IM2LATEX-100K 将数学公式图像与 LaTeX 源码配对，由 Yuntian Deng、Anssi Kanervisto 和 Alexander M. Rush 的 Image-to-Markup 研究提出。数据分发包括原始归档、原始与预处理文件及 Hugging Face 导出。使用数据时请注明具体版本、划分与预处理，并引用原始论文。",
       "inLanguage": "zh-Hans",
       "isPartOf": {
         "@id": "https://im2markup.yuntiandeng.com/"
