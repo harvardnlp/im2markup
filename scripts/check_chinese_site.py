@@ -206,6 +206,13 @@ def main():
                 assert block.strip() in bibtex.values(), (chinese, "embedded BibTeX differs from shared citation")
         check_links(page, url, cache)
 
+    english_guide = next(obj for obj in objects(Page(SITE / "guide/index.html").jsonld)
+                         if has_type(obj, "Article") and obj.get("@id") == ORIGIN + "/guide/#guide")
+    chinese_guide = next(obj for obj in objects(Page(SITE / "zh/guide/index.html").jsonld)
+                         if has_type(obj, "Article") and obj.get("@id") == ORIGIN + "/zh/guide/#guide")
+    assert english_guide["workTranslation"]["@id"] == chinese_guide["@id"], "English translation link must identify the Chinese article"
+    assert chinese_guide["translationOfWork"]["@id"] == english_guide["@id"], "Chinese article must identify its English original"
+
     chinese_dataset = json.loads((SITE / "zh/data/dataset.json").read_text(encoding="utf-8"))
     for key in ("@id", "@type", "url", "name", "creator", "citation", "distribution", "license", "sameAs", "datePublished"):
         assert chinese_dataset[key] == english_dataset[key], ("Chinese dataset changed original field", key)
