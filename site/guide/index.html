@@ -52,14 +52,14 @@
           <tr><td><a href="https://huggingface.co/datasets/yuntian-deng/im2latex-100k-raw">HF formula-variant export</a></td><td class="number">165,099</td><td class="number">18,216</td><td class="number">20,430</td><td>Three target representations for each source row: <code>none</code>, <code>tokenized</code>, and <code>normalized</code>.</td></tr>
         </tbody>
       </table></div>
-      <p>The HF repository named <code>im2latex-100k-raw</code> contains 203,745 variant rows, representing the same 67,915 source rows as the normalized export. It does not contain 203,745 independent formula images or the complete original archive. Its <code>preprocessing</code> field describes the target string, not a transformation to apply to the image.</p>
+      <p>The HF repository named <code>im2latex-100k-raw</code> contains 203,745 variant rows, representing the same 67,915 source rows as the normalized export. Its <code>preprocessing</code> field describes the target string, not a transformation to apply to the image.</p>
       <div class="note"><p><strong>Keep the comparison tied to its data.</strong> A result on the HF test split is a result on 6,810 exported rows. Compare it with the paper’s test results after aligning the actual examples, preprocessing, decoding, and evaluation protocol. The exact additional selection and image export recipe for the 2022 HF exports is not recorded in those repositories.</p></div>
     </section>
 
     <section class="section" id="load">
       <p class="eyebrow">2 / inspect before training</p>
       <h2>Load a pinned example.</h2>
-      <p>This Python example uses Hugging Face <code>datasets</code> and Pillow. It streams the normalized training split at a fixed repository revision and inspects one image–formula pair without materializing the full dataset. Streaming reads remote Parquet data; selecting one row does not restrict the download to that image.</p>
+      <p>This Python example uses Hugging Face <code>datasets</code> and Pillow. It streams the normalized training split at a fixed repository revision and inspects one image–formula pair without materializing the full dataset.</p>
       <pre id="load-normalized"><code>from contextlib import closing
 from io import BytesIO
 from PIL import Image

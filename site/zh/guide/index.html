@@ -28,8 +28,8 @@
 <tr><td><a href="/zh/data/#processed-files">项目托管处理后列表</a></td><td class="number">75,275</td><td class="number">8,370</td><td class="number">10,355</td><td>共 94,000 条记录；测试集转换格式，不作过滤</td></tr>
 <tr><td><a href="https://huggingface.co/datasets/yuntian-deng/im2latex-100k">HF 规范化导出</a></td><td class="number">55,033</td><td class="number">6,072</td><td class="number">6,810</td><td>共 67,915 行，目标为规范化 LaTeX</td></tr>
 <tr><td><a href="https://huggingface.co/datasets/yuntian-deng/im2latex-100k-raw">HF 目标表示导出</a></td><td class="number">165,099</td><td class="number">18,216</td><td class="number">20,430</td><td>共 203,745 行；每个源样本对应三种目标表示</td></tr>
-</tbody></table></div><p><code>im2latex-100k-raw</code> 的 203,745 行来自与规范化导出相同的 67,915 个源样本，每个源样本对应三种目标字符串。它不包含 203,745 张独立公式图片，也不等同于完整原始归档。<code>preprocessing</code> 字段描述目标字符串。</p><div class="note"><p><strong>按实际数据比较：</strong>HF 测试集结果对应 6,810 行导出记录。与论文结果比较前，需要对齐样本、预处理、解码和评估协议。2022 年 HF 导出的额外筛选与图像导出流程未在仓库中完整记录。</p></div></section>
-<section class="section" id="load"><p class="eyebrow">2 / 训练前检查</p><h2>加载固定版本的示例</h2><p>下面的 Python 示例使用 Hugging Face <code>datasets</code> 与 Pillow，从固定版本流式读取规范化训练集中的一条图像—公式记录。流式读取需要获取远程 Parquet 数据，不代表网络传输量恰好等于一张图片。</p><pre><code>from contextlib import closing
+</tbody></table></div><p><code>im2latex-100k-raw</code> 的 203,745 行来自与规范化导出相同的 67,915 个源样本，每个源样本对应三种目标字符串。<code>preprocessing</code> 字段描述目标字符串。</p><div class="note"><p><strong>按实际数据比较：</strong>HF 测试集结果对应 6,810 行导出记录。与论文结果比较前，需要对齐样本、预处理、解码和评估协议。2022 年 HF 导出的额外筛选与图像导出流程未在仓库中完整记录。</p></div></section>
+<section class="section" id="load"><p class="eyebrow">2 / 训练前检查</p><h2>加载固定版本的示例</h2><p>下面的 Python 示例使用 Hugging Face <code>datasets</code> 与 Pillow，从固定版本流式读取规范化训练集中的一条图像—公式记录。</p><pre><code>from contextlib import closing
 from io import BytesIO
 from PIL import Image
 from datasets import Image as DatasetImage, load_dataset
