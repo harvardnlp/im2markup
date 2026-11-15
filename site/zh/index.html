@@ -41,6 +41,13 @@
 <li><time datetime="2016-09-16">2016 年 9 月 16 日</time><div><h3 lang="en">What You Get Is What You See: A Visual Markup Decompiler</h3><p>Yuntian Deng, Anssi Kanervisto, Alexander M. Rush。</p><p>原始预印本研究公式图像转 LaTeX 与合成网页图像转 HTML，并介绍 IM2LATEX-100K。<a href="https://arxiv.org/abs/1609.04938v1">arXiv v1</a> · <a href="https://arxiv.org/pdf/1609.04938v1">PDF</a></p></div></li>
 <li><time datetime="2017">ICML 2017</time><div><h3 lang="en">Image-to-Markup Generation with Coarse-to-Fine Attention</h3><p>Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, Alexander M. Rush。</p><p>PMLR 70，980–989 页。对应的 arXiv 修订版于 2017 年 6 月 13 日提交。<a href="https://proceedings.mlr.press/v70/deng17a.html">正式出版记录</a> · <a href="https://arxiv.org/abs/1609.04938v2">arXiv v2</a></p></div></li></ol></section>
 <section class="section" id="code"><h2>代码与演示</h2><div class="columns"><div><h3>原始实现</h3><p><a href="https://github.com/harvardnlp/im2markup">Harvard NLP 代码仓库</a>提供 Torch 模型、预处理与评估脚本、预训练模型链接以及合成 HTML 示例。<a href="/zh/guide/#historical">查看预处理、训练与评估命令</a>。</p></div><div><h3>查看模型输出与注意力</h3><p><a href="/demo.html">原始演示（英文）</a>展示公式预测、注意力、模型结构和定性结果。</p></div></div></section>
+<section class="section" id="community">
+  <p class="eyebrow">延伸阅读</p><h2>社区资源与讨论</h2>
+  <div class="columns">
+    <div><h3><a href="https://github.com/openai/requests-for-research/blob/master/_requests_for_research/im2latex.html" lang="en">OpenAI im2latex challenge</a></h3><p class="small">历史研究挑战与方案记录（英文）</p><p>OpenAI 的 im2latex 挑战归档链接了 Image-to-Markup 的结果、数据集和代码，并介绍了其中的 HTML 生成实验。</p></div>
+    <div><h3><a href="https://guillaumegenthial.github.io/image-to-latex.html" lang="en">Seq2Seq for LaTeX generation</a></h3><p class="small">实现教程（英文）· Guillaume Genthial · <time datetime="2017-11-08">2017 年 11 月 8 日</time></p><p>Guillaume Genthial 的教程讲解了后续的 TensorFlow 实现，并链接了原始 Image-to-Markup 研究。</p></div>
+  </div>
+</section>
 <section class="section anchor" id="citation"><p class="eyebrow">论文与引用</p><h2>引用原始研究，注明数据版本</h2>
 <p>使用 IM2LATEX-100K、处理版本或 Image-to-Markup 模型时，请引用 ICML 2017 论文，并注明实际使用的数据版本和预处理。使用镜像或衍生版本时，同时保留原始数据集与新增工作的贡献说明。</p>
 <h3>ICML 2017 论文</h3><p class="citation"><strong>Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, Alexander M. Rush.</strong> <a href="https://proceedings.mlr.press/v70/deng17a.html" lang="en">Image-to-Markup Generation with Coarse-to-Fine Attention.</a> ICML 2017，PMLR 70:980–989。</p>
