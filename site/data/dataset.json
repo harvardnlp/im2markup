@@ -124,39 +124,6 @@
     {
       "@context": "https://schema.org",
       "@type": "ScholarlyArticle",
-      "@id": "https://im2markup.yuntiandeng.com/#paper-2016",
-      "name": "What You Get Is What You See: A Visual Markup Decompiler",
-      "author": [
-        {
-          "@type": "Person",
-          "name": "Yuntian Deng",
-          "url": "https://yuntiandeng.com/"
-        },
-        {
-          "@type": "Person",
-          "name": "Anssi Kanervisto",
-          "url": "https://github.com/Miffyli"
-        },
-        {
-          "@type": "Person",
-          "name": "Alexander M. Rush",
-          "url": "https://rush-nlp.com/"
-        }
-      ],
-      "datePublished": "2016-09-16",
-      "version": "arXiv v1",
-      "url": "https://arxiv.org/abs/1609.04938v1",
-      "identifier": "arXiv:1609.04938v1",
-      "description": "The original Image-to-Markup paper introduces IM2LATEX-100K and learns to recover LaTeX and HTML from rendered images.",
-      "encoding": {
-        "@type": "MediaObject",
-        "contentUrl": "https://arxiv.org/pdf/1609.04938v1",
-        "encodingFormat": "application/pdf"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
       "@id": "https://im2markup.yuntiandeng.com/#paper",
       "name": "Image-to-Markup Generation with Coarse-to-Fine Attention",
       "author": [
@@ -199,6 +166,39 @@
       "isBasedOn": {
         "@id": "https://im2markup.yuntiandeng.com/#paper-2016"
       }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": "https://im2markup.yuntiandeng.com/#paper-2016",
+      "name": "What You Get Is What You See: A Visual Markup Decompiler",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Yuntian Deng",
+          "url": "https://yuntiandeng.com/"
+        },
+        {
+          "@type": "Person",
+          "name": "Anssi Kanervisto",
+          "url": "https://github.com/Miffyli"
+        },
+        {
+          "@type": "Person",
+          "name": "Alexander M. Rush",
+          "url": "https://rush-nlp.com/"
+        }
+      ],
+      "datePublished": "2016-09-16",
+      "version": "arXiv v1",
+      "url": "https://arxiv.org/abs/1609.04938v1",
+      "identifier": "arXiv:1609.04938v1",
+      "description": "The original Image-to-Markup paper introduces IM2LATEX-100K and learns to recover LaTeX and HTML from rendered images.",
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://arxiv.org/pdf/1609.04938v1",
+        "encodingFormat": "application/pdf"
+      }
     }
   ],
   "mainEntityOfPage": [
@@ -213,7 +213,7 @@
       "@id": "https://im2markup.yuntiandeng.com/zh/data/#webpage",
       "url": "https://im2markup.yuntiandeng.com/zh/data/",
       "name": "IM2LATEX-100K 公式识别数据集：下载、来源与引用",
-      "description": "IM2LATEX-100K 将数学公式图像与 LaTeX 源码配对，由 Yuntian Deng、Anssi Kanervisto 和 Alexander M. Rush 的 Image-to-Markup 研究提出。数据分发包括原始归档、原始与预处理文件及 Hugging Face 导出。使用数据时请注明具体版本、划分与预处理，并引用原始论文。",
+      "description": "IM2LATEX-100K 将数学公式图像与 LaTeX 源码配对，来自 Yuntian Deng 与合作者的 Image-to-Markup 研究。数据分发包括原始归档、原始与预处理文件及 Hugging Face 导出。使用数据时请注明具体版本、划分与预处理，并引用 ICML 2017 论文。",
       "inLanguage": "zh-Hans",
       "isPartOf": {
         "@id": "https://im2markup.yuntiandeng.com/"

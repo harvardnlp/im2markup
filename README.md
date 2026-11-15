@@ -4,11 +4,11 @@ A general-purpose, deep learning-based system to decompile an image into present
 
 **[Project and research history](https://im2markup.yuntiandeng.com/) · [IM2LATEX-100K downloads and version guide](https://im2markup.yuntiandeng.com/data/) · [Training and evaluation guide](https://im2markup.yuntiandeng.com/guide/) · [Interactive demo](https://im2markup.yuntiandeng.com/demo.html)**
 
-IM2LATEX-100K was introduced by Yuntian Deng, Anssi Kanervisto, and Alexander M. Rush in **[What You Get Is What You See: A Visual Markup Decompiler](https://arxiv.org/abs/1609.04938v1)** (16 September 2016, arXiv v1). The subsequent ICML 2017 paper, with Jeffrey Ling, develops coarse-to-fine attention. If you use the dataset, a processed copy, or this model, please cite:
+If you use IM2LATEX-100K, a processed copy, or this model, please cite the ICML 2017 paper:
 
 > Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush. **[Image-to-Markup Generation with Coarse-to-Fine Attention](https://proceedings.mlr.press/v70/deng17a.html)**. ICML 2017, PMLR 70:980–989.
 
-[ICML 2017 BibTeX](https://im2markup.yuntiandeng.com/citation.bib), [original 2016 BibTeX](https://im2markup.yuntiandeng.com/citation-2016.bib), and [CITATION.cff](CITATION.cff) are available. Identify the exact dataset distribution and preprocessing used; the original files and later Hugging Face exports have different split sizes. The [dataset guide](https://im2markup.yuntiandeng.com/data/) documents those distinctions and the original archive by coauthor Anssi Kanervisto.
+[ICML 2017 BibTeX](https://im2markup.yuntiandeng.com/citation.bib) and [CITATION.cff](CITATION.cff) are available. Identify the exact dataset distribution and preprocessing used; the original files and later Hugging Face exports have different split sizes. The [dataset guide](https://im2markup.yuntiandeng.com/data/) documents those distinctions and the original archive by coauthor Anssi Kanervisto.
 
 <p align="center"><img src="https://im2markup.yuntiandeng.com/network.png" width="400"></p>
 
@@ -27,11 +27,9 @@ Our model employs a convolutional network for text and layout recognition in tan
 <p align="center"><img src="https://im2markup.yuntiandeng.com/mathex.png"></p>
 
 
-See [the original interactive demo](https://im2markup.yuntiandeng.com/demo.html) for this visualization over the test set. The original September 2016 paper provides details of the visual markup decompiler, including both LaTeX and HTML:
+See [the original interactive demo](https://im2markup.yuntiandeng.com/demo.html) for this visualization over the test set.
 
-    What You Get Is What You See: A Visual Markup Decompiler  
-    Yuntian Deng, Anssi Kanervisto, and Alexander M. Rush
-    https://arxiv.org/abs/1609.04938v1
+**History.** The September 2016 preprint, [What You Get Is What You See: A Visual Markup Decompiler](https://arxiv.org/abs/1609.04938v1), introduced IM2LATEX-100K and studied both image-to-LaTeX and image-to-HTML. See that version for the HTML experiments; its [2016 BibTeX](https://im2markup.yuntiandeng.com/citation-2016.bib) remains available.
 
 The static project and dataset documentation are maintained in [`site/`](site/). Dataset archives, pretrained weights, and recorded demo data remain available at their existing project-site URLs.
 
